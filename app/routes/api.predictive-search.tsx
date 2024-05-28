@@ -1,9 +1,4 @@
 import {json, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
-import type {
-  NormalizedPredictiveSearch,
-  NormalizedPredictiveSearchResults,
-} from '~/components/Search';
-import {NO_PREDICTIVE_SEARCH_RESULTS} from '~/components/Search';
 import {applyTrackingParams} from '~/lib/search';
 
 import type {
@@ -14,6 +9,9 @@ import type {
   PredictiveQueryFragment,
   PredictiveSearchQuery,
 } from 'storefrontapi.generated';
+import {NormalizedPredictiveSearch} from '~/components/search/types/NormalizedPredictiveSearch';
+import {NO_PREDICTIVE_SEARCH_RESULTS} from '~/components/search/graphql/noPredictiveSearchResults';
+import {NormalizedPredictiveSearchResults} from '~/components/search/types/NormalizedPredictiveSearchResults';
 
 type PredictiveSearchTypes =
   | 'ARTICLE'

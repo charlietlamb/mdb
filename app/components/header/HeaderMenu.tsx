@@ -16,7 +16,6 @@ export function HeaderMenu({
   viewport: Viewport;
 }) {
   const {publicStoreDomain} = useRootLoaderData();
-  const className = `header-menu-${viewport}`;
 
   function closeAside(event: React.MouseEvent<HTMLAnchorElement>) {
     if (viewport === 'mobile') {
@@ -26,7 +25,7 @@ export function HeaderMenu({
   }
 
   return (
-    <nav className={className} role="navigation">
+    <nav className="flex justify-center gap-4" role="navigation">
       {viewport === 'mobile' && (
         <NavLink
           end
@@ -50,7 +49,7 @@ export function HeaderMenu({
             : item.url;
         return (
           <NavLink
-            className="text-red-500"
+            className=""
             end
             key={item.id}
             onClick={closeAside}
