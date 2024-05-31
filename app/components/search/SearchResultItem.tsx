@@ -7,17 +7,18 @@ export function SearchResultItem({
   item,
 }: SearchResultItemProps) {
   return (
-    <li className="predictive-search-result-item" key={item.id}>
-      <Link onClick={goToSearchResult} to={item.url}>
+    <li className="flex gap-1" key={item.id}>
+      <Link onClick={goToSearchResult} to={item.url} className="flex gap-2">
         {item.image?.url && (
           <Image
             alt={item.image.altText ?? ''}
             src={item.image.url}
             width={50}
             height={50}
+            className="rounded-md"
           />
         )}
-        <div>
+        <div className="flex flex-col">
           {item.styledTitle ? (
             <div
               dangerouslySetInnerHTML={{
@@ -25,7 +26,7 @@ export function SearchResultItem({
               }}
             />
           ) : (
-            <span>{item.title}</span>
+            <span className="font-medium">{item.title}</span>
           )}
           {item?.price && (
             <small>

@@ -21,9 +21,5 @@ export function CartLinePrice({
     return null;
   }
 
-  return (
-    <div>
-      <Money withoutTrailingZeros {...passthroughProps} data={moneyV2} />
-    </div>
-  );
+  return <Money withoutTrailingZeros {...passthroughProps} data={moneyV2} />;
 }

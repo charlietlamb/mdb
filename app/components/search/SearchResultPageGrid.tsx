@@ -1,20 +1,20 @@
 import {Link} from '@remix-run/react';
 import {SearchQuery} from 'storefrontapi.generated';
+import {Button} from '../ui/button';
 
 export function SearchResultPageGrid({pages}: Pick<SearchQuery, 'pages'>) {
   return (
-    <div className="search-result">
-      <h2>Pages</h2>
-      <div>
+    <div>
+      <h2 className="text-2xl font-semibold">Pages</h2>
+      <div className="flex flex-col gap-1">
         {pages?.nodes?.map((page) => (
-          <div className="search-results-item" key={page.id}>
-            <Link prefetch="intent" to={`/pages/${page.handle}`}>
+          <Link prefetch="intent" to={`/pages/${page.handle}`} key={page.id}>
+            <Button variant="link" className="p-0">
               {page.title}
-            </Link>
-          </div>
+            </Button>
+          </Link>
         ))}
       </div>
-      <br />
     </div>
   );
 }

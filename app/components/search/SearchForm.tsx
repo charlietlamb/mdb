@@ -1,5 +1,8 @@
 import {Form} from '@remix-run/react';
 import {useEffect, useRef} from 'react';
+import {Input} from '~/components/ui/input';
+import {Button} from '~/components/ui/button';
+import {Search} from 'lucide-react';
 
 export function SearchForm({searchTerm}: {searchTerm: string}) {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -24,16 +27,18 @@ export function SearchForm({searchTerm}: {searchTerm: string}) {
     };
   }, []);
   return (
-    <Form method="get">
-      <input
+    <Form method="get" className="flex gap-2">
+      <Input
         defaultValue={searchTerm}
         name="q"
         placeholder="Search…"
         ref={inputRef}
         type="search"
       />
-      &nbsp;
-      <button type="submit">Search</button>
+
+      <Button type="submit">
+        <Search />
+      </Button>
     </Form>
   );
 }

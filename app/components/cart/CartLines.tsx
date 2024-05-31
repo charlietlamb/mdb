@@ -12,8 +12,8 @@ export function CartLines({
   if (!lines) return null;
 
   return (
-    <div aria-labelledby="cart-lines">
-      <ul>
+    <div>
+      <ul className="flex flex-col gap-2">
         {lines.nodes.map((line) => (
           <CartLineItem key={line.id} line={line} layout={layout} />
         ))}

@@ -5,7 +5,7 @@ import type {
   FooterQuery,
   HeaderQuery,
 } from 'storefrontapi.generated';
-import {Footer} from '~/components/Footer';
+import {Footer} from '~/components/footer/Footer';
 import {Header} from '~/components/header/Header';
 
 export type LayoutProps = {

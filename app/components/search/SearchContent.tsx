@@ -6,7 +6,7 @@ import {SearchIcon} from 'lucide-react';
 
 export default function SearchContent() {
   return (
-    <div className="predictive-search">
+    <div className="flex flex-col w-full max-h-full gap-4">
       <PredictiveSearchForm>
         {({fetchResults, inputRef}) => (
           <div className="flex flex-col gap-2">

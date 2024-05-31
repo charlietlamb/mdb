@@ -1,5 +1,8 @@
 import {CartApiQueryFragment} from 'storefrontapi.generated';
 import {UpdateDiscountForm} from './UpdateDiscountForm';
+import {Input} from '../ui/input';
+import {Button} from '../ui/button';
+import {TicketPlus} from 'lucide-react';
 
 export function CartDiscounts({
   discountCodes,
@@ -29,10 +32,11 @@ export function CartDiscounts({
 
       {/* Show an input to apply a discount */}
       <UpdateDiscountForm discountCodes={codes}>
-        <div>
-          <input type="text" name="discountCode" placeholder="Discount code" />
-          &nbsp;
-          <button type="submit">Apply</button>
+        <div className="flex gap-2">
+          <Input type="text" name="discountCode" placeholder="Discount code" />
+          <Button type="submit">
+            <TicketPlus />
+          </Button>
         </div>
       </UpdateDiscountForm>
     </div>

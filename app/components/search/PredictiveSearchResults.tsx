@@ -2,6 +2,10 @@ import {Link} from '@remix-run/react';
 import {NoPredictiveSearchResults} from './NoPredictiveSearchResults';
 import {PredictiveSearchResult} from './PredictiveSearchResult';
 import {usePredictiveSearch} from './functions/usePredictiveSearch';
+import Loading from '~/components/general/Loading';
+import {Button} from '~/components/ui/button';
+import {ArrowRight} from 'lucide-react';
+import GoButton from '../general/GoButton';
 
 export function PredictiveSearchResults() {
   const {results, totalResults, searchInputRef, searchTerm, state} =
@@ -16,7 +20,7 @@ export function PredictiveSearchResults() {
   }
 
   if (state === 'loading') {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (!totalResults) {
@@ -24,7 +28,7 @@ export function PredictiveSearchResults() {
   }
 
   return (
-    <div className="predictive-search-results">
+    <div className="flex flex-col gap-4 overflow-y-auto rounded-md">
       <div>
         {results.map(({type, items}) => (
           <PredictiveSearchResult
@@ -38,10 +42,9 @@ export function PredictiveSearchResults() {
       </div>
       {searchTerm.current && (
         <Link onClick={goToSearchResult} to={`/search?q=${searchTerm.current}`}>
-          <p>
-            View all results for <q>{searchTerm.current}</q>
-            &nbsp; →
-          </p>
+          <GoButton>
+            View all results for {' "' + searchTerm.current + '"'}
+          </GoButton>
         </Link>
       )}
     </div>

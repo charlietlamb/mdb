@@ -7,8 +7,11 @@ export function NoPredictiveSearchResults({
     return null;
   }
   return (
-    <p>
-      No results found for <q>{searchTerm.current}</q>
-    </p>
+    <div className="flex flex-col">
+      <p className="text-xl font-semibold">No Results Found</p>
+      <p className="text-primary-700">
+        No results found for <q>{searchTerm.current}</q>
+      </p>
+    </div>
   );
 }

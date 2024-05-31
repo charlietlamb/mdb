@@ -52,8 +52,8 @@ export default function SearchPage() {
   const {searchTerm, searchResults} = useLoaderData<typeof loader>();
 
   return (
-    <div className="search">
-      <h1>Search</h1>
+    <div className="flex flex-col gap-4">
+      <h1 className="text-4xl font-bold">Search</h1>
       <SearchForm searchTerm={searchTerm} />
       {!searchTerm || !searchResults.totalResults ? (
         <NoSearchResults />

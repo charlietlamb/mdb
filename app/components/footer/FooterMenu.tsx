@@ -13,7 +13,10 @@ export function FooterMenu({
   const {publicStoreDomain} = useRootLoaderData();
 
   return (
-    <nav className="footer-menu" role="navigation">
+    <nav
+      className="bg-primary-100 flex justify-around w-full p-4"
+      role="navigation"
+    >
       {(menu || FALLBACK_FOOTER_MENU).items.map((item) => {
         if (!item.url) return null;
         // if the url is internal, we strip the domain
@@ -33,8 +36,8 @@ export function FooterMenu({
             end
             key={item.id}
             prefetch="intent"
-            style={activeLinkStyle}
             to={url}
+            className="text-primary-900"
           >
             {item.title}
           </NavLink>
@@ -42,17 +45,4 @@ export function FooterMenu({
       })}
     </nav>
   );
-}
-
-function activeLinkStyle({
-  isActive,
-  isPending,
-}: {
-  isActive: boolean;
-  isPending: boolean;
-}) {
-  return {
-    fontWeight: isActive ? 'bold' : undefined,
-    color: isPending ? 'grey' : 'white',
-  };
 }

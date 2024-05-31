@@ -1,6 +1,8 @@
 import {CartLine} from '@shopify/hydrogen/storefront-api-types';
 import {CartLineUpdateButton} from './CartLineUpdateButton';
 import {CartLineRemoveButton} from './CartLineRemoveButton';
+import {Button} from '~/components/ui/button';
+import {Minus, Plus} from 'lucide-react';
 
 export function CartLineQuantity({line}: {line: CartLine}) {
   if (!line || typeof line?.quantity === 'undefined') return null;
@@ -9,30 +11,25 @@ export function CartLineQuantity({line}: {line: CartLine}) {
   const nextQuantity = Number((quantity + 1).toFixed(0));
 
   return (
-    <div className="cart-line-quantity">
-      <small>Quantity: {quantity} &nbsp;&nbsp;</small>
+    <div className="flex items-center rounded-md">
       <CartLineUpdateButton lines={[{id: lineId, quantity: prevQuantity}]}>
-        <button
-          aria-label="Decrease quantity"
+        <Button
           disabled={quantity <= 1}
-          name="decrease-quantity"
           value={prevQuantity}
+          variant="ghost"
+          className="p-0" // Add h-full here
         >
-          <span>&#8722; </span>
-        </button>
+          <Minus />
+        </Button>
       </CartLineUpdateButton>
-      &nbsp;
+      <p className="flex flex-col justify-center h-10 px-2 font-medium">
+        {quantity}
+      </p>
       <CartLineUpdateButton lines={[{id: lineId, quantity: nextQuantity}]}>
-        <button
-          aria-label="Increase quantity"
-          name="increase-quantity"
-          value={nextQuantity}
-        >
-          <span>&#43;</span>
-        </button>
+        <Button value={nextQuantity} variant="ghost" className="p-0">
+          <Plus />
+        </Button>
       </CartLineUpdateButton>
-      &nbsp;
-      <CartLineRemoveButton lineIds={[lineId]} />
     </div>
   );
 }

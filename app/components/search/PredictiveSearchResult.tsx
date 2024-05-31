@@ -16,11 +16,13 @@ export function PredictiveSearchResult({
   }&type=${pluralToSingularSearchType(type)}`;
 
   return (
-    <div className="predictive-search-result" key={type}>
+    <div key={type} className="flex flex-col gap-2">
       <Link prefetch="intent" to={categoryUrl} onClick={goToSearchResult}>
-        <h5>{isSuggestions ? 'Suggestions' : type}</h5>
+        <h5 className="text-xl font-semibold capitalize">
+          {isSuggestions ? 'Suggestions' : type}
+        </h5>
       </Link>
-      <ul>
+      <ul className="flex flex-col gap-2">
         {items.map((item: NormalizedPredictiveSearchResultItem) => (
           <SearchResultItem
             goToSearchResult={goToSearchResult}

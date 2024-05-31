@@ -12,7 +12,6 @@ import {
   type ShouldRevalidateFunction,
 } from '@remix-run/react';
 import favicon from './assets/favicon.svg';
-import resetStyles from './styles/reset.css?url';
 import appStyles from './styles/app.css?url';
 import tailwindStyles from './styles/tailwind.css?url';
 import tailwindMinStyles from './styles/tailwind.min.css?url';
@@ -41,7 +40,6 @@ export const shouldRevalidate: ShouldRevalidateFunction = ({
 
 export function links() {
   return [
-    {rel: 'stylesheet', href: resetStyles},
     {rel: 'stylesheet', href: appStyles},
     {rel: 'stylesheet', href: tailwindStyles},
     {rel: 'stylesheet', href: tailwindMinStyles},

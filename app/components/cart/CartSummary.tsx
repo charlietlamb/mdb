@@ -14,9 +14,9 @@ export function CartSummary({
   return (
     <div className="flex flex-col gap-2">
       <div>
-        <h4 className="font-semibold">Totals</h4>
+        <h4 className="text-xl font-semibold">Totals</h4>
         <dl className="flex gap-1">
-          <dt className="font-medium">Subtotal:</dt>
+          <dt className="text-primary-600 font-medium">Subtotal:</dt>
           <dd>
             {cost?.subtotalAmount?.amount ? (
               <Money data={cost?.subtotalAmount} />
