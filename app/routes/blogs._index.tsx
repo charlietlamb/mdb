@@ -1,6 +1,8 @@
 import {json, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {Link, useLoaderData, type MetaFunction} from '@remix-run/react';
 import {Pagination, getPaginationVariables} from '@shopify/hydrogen';
+import PaginationButtons from '~/components/general/PaginationButtons';
+import {BLOGS_QUERY} from '~/components/blogs-all/graphql/blogsQuery';
 
 export const meta: MetaFunction = () => {
   return [{title: `Hydrogen | Blogs`}];
@@ -27,31 +29,29 @@ export default function Blogs() {
   const {blogs} = useLoaderData<typeof loader>();
 
   return (
-    <div className="blogs">
-      <h1>Blogs</h1>
-      <div className="blogs-grid">
+    <div className="flex flex-col items-center gap-4 p-4">
+      <h1 className="text-4xl font-bold">Blogs</h1>
+      <div className="lg:grid-cols-4 grid w-full grid-cols-2 gap-4">
         <Pagination connection={blogs}>
           {({nodes, isLoading, PreviousLink, NextLink}) => {
             return (
               <>
-                <PreviousLink>
-                  {isLoading ? 'Loading...' : <span>↑ Load previous</span>}
-                </PreviousLink>
                 {nodes.map((blog) => {
                   return (
                     <Link
-                      className="blog"
                       key={blog.handle}
                       prefetch="intent"
                       to={`/blogs/${blog.handle}`}
                     >
-                      <h2>{blog.title}</h2>
+                      <h2 className="text-2xl font-semibold">{blog.title}</h2>
                     </Link>
                   );
                 })}
-                <NextLink>
-                  {isLoading ? 'Loading...' : <span>Load more ↓</span>}
-                </NextLink>
+                <PaginationButtons
+                  isLoading={isLoading}
+                  NextLink={NextLink}
+                  PreviousLink={PreviousLink}
+                />
               </>
             );
           }}
@@ -60,37 +60,3 @@ export default function Blogs() {
     </div>
   );
 }
-
-// NOTE: https://shopify.dev/docs/api/storefront/latest/objects/blog
-const BLOGS_QUERY = `#graphql
-  query Blogs(
-    $country: CountryCode
-    $endCursor: String
-    $first: Int
-    $language: LanguageCode
-    $last: Int
-    $startCursor: String
-  ) @inContext(country: $country, language: $language) {
-    blogs(
-      first: $first,
-      last: $last,
-      before: $startCursor,
-      after: $endCursor
-    ) {
-      pageInfo {
-        hasNextPage
-        hasPreviousPage
-        startCursor
-        endCursor
-      }
-      nodes {
-        title
-        handle
-        seo {
-          title
-          description
-        }
-      }
-    }
-  }
-` as const;

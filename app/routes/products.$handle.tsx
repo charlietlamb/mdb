@@ -1,12 +1,13 @@
+import {defer, redirect, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {useLoaderData, type MetaFunction} from '@remix-run/react';
-import {LoaderFunctionArgs, defer} from '@remix-run/server-runtime';
-import {getSelectedProductOptions} from '@shopify/hydrogen';
-import {SelectedOption} from '@shopify/hydrogen/storefront-api-types';
+import type {ProductFragment} from 'storefrontapi.generated';
+import {getSelectedProductOptions, CartForm} from '@shopify/hydrogen';
+import type {SelectedOption} from '@shopify/hydrogen/storefront-api-types';
+import {getVariantUrl} from '~/lib/variants';
+import {VARIANTS_QUERY} from '~/components/product/graphql/varientsQuery';
+import {PRODUCT_QUERY} from '~/components/product/graphql/productQuery';
 import {ProductImage} from '~/components/product/ProductImage';
 import {ProductMain} from '~/components/product/ProductMain';
-import {redirectToFirstVariant} from '~/components/product/functions/redirectToFirstVariant';
-import {PRODUCT_QUERY} from '~/components/product/graphql/productQuery';
-import {VARIANTS_QUERY} from '~/components/product/graphql/varientsQuery';
 
 export const meta: MetaFunction<typeof loader> = ({data}) => {
   return [{title: `Hydrogen | ${data?.product.title ?? ''}`}];
@@ -59,11 +60,34 @@ export async function loader({params, request, context}: LoaderFunctionArgs) {
   return defer({product, variants});
 }
 
-export function Product() {
+function redirectToFirstVariant({
+  product,
+  request,
+}: {
+  product: ProductFragment;
+  request: Request;
+}) {
+  const url = new URL(request.url);
+  const firstVariant = product.variants.nodes[0];
+
+  return redirect(
+    getVariantUrl({
+      pathname: url.pathname,
+      handle: product.handle,
+      selectedOptions: firstVariant.selectedOptions,
+      searchParams: new URLSearchParams(url.search),
+    }),
+    {
+      status: 302,
+    },
+  );
+}
+
+export default function Product() {
   const {product, variants} = useLoaderData<typeof loader>();
   const {selectedVariant} = product;
   return (
-    <div className="product">
+    <div className="flex">
       <ProductImage image={selectedVariant?.image} />
       <ProductMain
         selectedVariant={selectedVariant}

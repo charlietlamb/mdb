@@ -2,6 +2,7 @@ import {VariantSelector} from '@shopify/hydrogen';
 import {ProductFragment, ProductVariantFragment} from 'storefrontapi.generated';
 import {ProductOptions} from './ProductOptions';
 import {AddToCartButton} from './AddToCartButton';
+import {Button} from '~/components/ui/button';
 
 export function ProductForm({
   product,
@@ -13,7 +14,7 @@ export function ProductForm({
   variants: Array<ProductVariantFragment>;
 }) {
   return (
-    <div className="product-form">
+    <div className="flex flex-col gap-4">
       <VariantSelector
         handle={product.handle}
         options={product.options}
@@ -21,7 +22,6 @@ export function ProductForm({
       >
         {({option}) => <ProductOptions key={option.name} option={option} />}
       </VariantSelector>
-      <br />
       <AddToCartButton
         disabled={!selectedVariant || !selectedVariant.availableForSale}
         onClick={() => {
@@ -38,7 +38,12 @@ export function ProductForm({
             : []
         }
       >
-        {selectedVariant?.availableForSale ? 'Add to cart' : 'Sold out'}
+        <Button
+          variant="add_to_cart"
+          disabled={!selectedVariant?.availableForSale}
+        >
+          {selectedVariant?.availableForSale ? 'Add to cart' : 'Sold out'}
+        </Button>
       </AddToCartButton>
     </div>
   );

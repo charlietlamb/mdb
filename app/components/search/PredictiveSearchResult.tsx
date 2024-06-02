@@ -16,7 +16,7 @@ export function PredictiveSearchResult({
   }&type=${pluralToSingularSearchType(type)}`;
 
   return (
-    <div key={type} className="flex flex-col gap-2">
+    <div key={type} className="flex flex-col">
       <Link prefetch="intent" to={categoryUrl} onClick={goToSearchResult}>
         <h5 className="text-xl font-semibold capitalize">
           {isSuggestions ? 'Suggestions' : type}

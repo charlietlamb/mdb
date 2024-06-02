@@ -11,7 +11,6 @@ export function ProductPrice({
       {selectedVariant?.compareAtPrice ? (
         <>
           <p>Sale</p>
-          <br />
           <div className="product-price-on-sale">
             {selectedVariant ? <Money data={selectedVariant.price} /> : null}
             <s>

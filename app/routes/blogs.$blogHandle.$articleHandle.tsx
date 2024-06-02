@@ -1,6 +1,7 @@
 import {json, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {useLoaderData, type MetaFunction} from '@remix-run/react';
 import {Image} from '@shopify/hydrogen';
+import {ARTICLE_QUERY} from '~/components/article/graphql/articleQuery';
 
 export const meta: MetaFunction<typeof loader> = ({data}) => {
   return [{title: `Hydrogen | ${data?.article.title ?? ''} article`}];
@@ -37,51 +38,17 @@ export default function Article() {
   }).format(new Date(article.publishedAt));
 
   return (
-    <div className="article">
-      <h1>
-        {title}
-        <span>
-          {publishedDate} &middot; {author?.name}
-        </span>
-      </h1>
+    <div className="flex flex-col gap-4 p-4">
+      <div className="flex items-center justify-between">
+        <h1 className="text-4xl font-bold">{title}</h1>
+        <h3>
+          {publishedDate} &middot;{' '}
+          <span className="font-medium">{author?.name}</span>
+        </h3>
+      </div>
 
       {image && <Image data={image} sizes="90vw" loading="eager" />}
-      <div
-        dangerouslySetInnerHTML={{__html: contentHtml}}
-        className="article"
-      />
+      <div dangerouslySetInnerHTML={{__html: contentHtml}} />
     </div>
   );
 }
-
-// NOTE: https://shopify.dev/docs/api/storefront/latest/objects/blog#field-blog-articlebyhandle
-const ARTICLE_QUERY = `#graphql
-  query Article(
-    $articleHandle: String!
-    $blogHandle: String!
-    $country: CountryCode
-    $language: LanguageCode
-  ) @inContext(language: $language, country: $country) {
-    blog(handle: $blogHandle) {
-      articleByHandle(handle: $articleHandle) {
-        title
-        contentHtml
-        publishedAt
-        author: authorV2 {
-          name
-        }
-        image {
-          id
-          altText
-          url
-          width
-          height
-        }
-        seo {
-          description
-          title
-        }
-      }
-    }
-  }
-` as const;

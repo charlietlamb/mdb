@@ -1,6 +1,8 @@
 import {json, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {Link, useLoaderData, type MetaFunction} from '@remix-run/react';
 import {type Shop} from '@shopify/hydrogen/storefront-api-types';
+import {Button} from '~/components/ui/button';
+import {POLICY_CONTENT_QUERY} from '~/components/policy/graphql/policyContentQuery';
 
 type SelectedPolicies = keyof Pick<
   Shop,
@@ -45,49 +47,14 @@ export default function Policy() {
   const {policy} = useLoaderData<typeof loader>();
 
   return (
-    <div className="policy">
-      <br />
-      <br />
+    <div className="flex flex-col gap-4 p-4">
       <div>
-        <Link to="/policies">← Back to Policies</Link>
+        <Link to="/policies">
+          <Button>← Back to Policies</Button>
+        </Link>
       </div>
-      <br />
-      <h1>{policy.title}</h1>
+      <h1 className="text-4xl font-bold">{policy.title}</h1>
       <div dangerouslySetInnerHTML={{__html: policy.body}} />
     </div>
   );
 }
-
-// NOTE: https://shopify.dev/docs/api/storefront/latest/objects/Shop
-const POLICY_CONTENT_QUERY = `#graphql
-  fragment Policy on ShopPolicy {
-    body
-    handle
-    id
-    title
-    url
-  }
-  query Policy(
-    $country: CountryCode
-    $language: LanguageCode
-    $privacyPolicy: Boolean!
-    $refundPolicy: Boolean!
-    $shippingPolicy: Boolean!
-    $termsOfService: Boolean!
-  ) @inContext(language: $language, country: $country) {
-    shop {
-      privacyPolicy @include(if: $privacyPolicy) {
-        ...Policy
-      }
-      shippingPolicy @include(if: $shippingPolicy) {
-        ...Policy
-      }
-      termsOfService @include(if: $termsOfService) {
-        ...Policy
-      }
-      refundPolicy @include(if: $refundPolicy) {
-        ...Policy
-      }
-    }
-  }
-` as const;

@@ -15,10 +15,11 @@ export function ProductMain({
 }) {
   const {title, descriptionHtml} = product;
   return (
-    <div className="product-main">
-      <h1>{title}</h1>
-      <ProductPrice selectedVariant={selectedVariant} />
-      <br />
+    <div className="flex flex-col gap-4 p-4">
+      <div className="lg:flex-row lg:justify-between lg:items-center flex flex-col">
+        <h1 className="text-4xl font-bold">{title}</h1>
+        <ProductPrice selectedVariant={selectedVariant} />
+      </div>
       <Suspense
         fallback={
           <ProductForm
@@ -41,14 +42,10 @@ export function ProductMain({
           )}
         </Await>
       </Suspense>
-      <br />
-      <br />
-      <p>
-        <strong>Description</strong>
-      </p>
-      <br />
-      <div dangerouslySetInnerHTML={{__html: descriptionHtml}} />
-      <br />
+      <div className="flex flex-col gap-2">
+        <p className="text-xl font-semibold">Description</p>
+        <div dangerouslySetInnerHTML={{__html: descriptionHtml}} />
+      </div>
     </div>
   );
 }

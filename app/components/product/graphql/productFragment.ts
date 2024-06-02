@@ -1,4 +1,4 @@
-import {PRODUCT_VARIANTS_FRAGMENT} from './productVariantsFragment';
+import {PRODUCT_VARIANT_FRAGMENT} from './productVariantFragment';
 
 export const PRODUCT_FRAGMENT = `#graphql
   fragment Product on Product {
@@ -25,5 +25,5 @@ export const PRODUCT_FRAGMENT = `#graphql
       title
     }
   }
-  ${PRODUCT_VARIANTS_FRAGMENT}
+  ${PRODUCT_VARIANT_FRAGMENT}
 ` as const;

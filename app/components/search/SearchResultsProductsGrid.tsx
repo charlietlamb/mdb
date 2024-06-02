@@ -3,9 +3,10 @@ import {Image, Money, Pagination} from '@shopify/hydrogen';
 import {SearchQuery} from 'storefrontapi.generated';
 import {applyTrackingParams} from '~/lib/search';
 import SearchResultsLoading from '~/components/general/Loading';
-import {Button} from '~/components/ui/button';
-import {ArrowLeft, ArrowRight} from 'lucide-react';
 import Loading from '~/components/general/Loading';
+import NextPage from '~/components/general/NextPage';
+import PreviousPage from '~/components/general/PreviousPage';
+import PaginationButtons from '../general/PaginationButtons';
 
 export function SearchResultsProductsGrid({
   products,
@@ -27,7 +28,7 @@ export function SearchResultsProductsGrid({
                 <Link
                   prefetch="intent"
                   to={`/products/${product.handle}${trackingParams}`}
-                  className="flex items-center"
+                  className="flex items-center gap-2"
                 >
                   {product.variants.nodes[0].image && (
                     <Image
@@ -50,27 +51,11 @@ export function SearchResultsProductsGrid({
           return (
             <div>
               <div>{ItemsMarkup}</div>
-              <div className="flex gap-2">
-                <PreviousLink>
-                  {isLoading ? (
-                    <Loading />
-                  ) : (
-                    <Button className="flex gap-2 rounded-full">
-                      <ArrowLeft />
-                    </Button>
-                  )}
-                </PreviousLink>
-                <NextLink>
-                  {isLoading ? (
-                    <SearchResultsLoading />
-                  ) : (
-                    <Button className="flex gap-2 rounded-full">
-                      Next Page
-                      <ArrowRight />
-                    </Button>
-                  )}
-                </NextLink>
-              </div>
+              <PaginationButtons
+                isLoading={isLoading}
+                NextLink={NextLink}
+                PreviousLink={PreviousLink}
+              />
             </div>
           );
         }}

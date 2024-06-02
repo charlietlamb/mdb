@@ -15,7 +15,7 @@ export function RecommendedProducts({
       <Suspense fallback={<Loading />}>
         <Await resolve={products}>
           {({products}) => (
-            <div className="recommended-products-grid">
+            <div className="lg:grid-cols-4 grid grid-cols-2 gap-4">
               {products.nodes.map((product) => (
                 <Link
                   key={product.id}
@@ -43,7 +43,6 @@ export function RecommendedProducts({
           )}
         </Await>
       </Suspense>
-      <br />
     </div>
   );
 }

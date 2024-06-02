@@ -1,5 +1,6 @@
 import {json, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {useLoaderData, Link} from '@remix-run/react';
+import {POLICIES_QUERY} from '~/components/policies/graphql/policiesQuery';
 
 export async function loader({context}: LoaderFunctionArgs) {
   const data = await context.storefront.query(POLICIES_QUERY);
@@ -16,13 +17,13 @@ export default function Policies() {
   const {policies} = useLoaderData<typeof loader>();
 
   return (
-    <div className="policies">
-      <h1>Policies</h1>
-      <div>
+    <div className="flex flex-col items-center gap-4 p-4">
+      <h1 className="text-4xl font-bold">Policies</h1>
+      <div className="lg:grid-cols-4 grid w-full grid-cols-2 gap-4">
         {policies.map((policy) => {
           if (!policy) return null;
           return (
-            <fieldset key={policy.id}>
+            <fieldset key={policy.id} className="flex justify-center w-full">
               <Link to={`/policies/${policy.handle}`}>{policy.title}</Link>
             </fieldset>
           );
@@ -31,33 +32,3 @@ export default function Policies() {
     </div>
   );
 }
-
-const POLICIES_QUERY = `#graphql
-  fragment PolicyItem on ShopPolicy {
-    id
-    title
-    handle
-  }
-  query Policies ($country: CountryCode, $language: LanguageCode)
-    @inContext(country: $country, language: $language) {
-    shop {
-      privacyPolicy {
-        ...PolicyItem
-      }
-      shippingPolicy {
-        ...PolicyItem
-      }
-      termsOfService {
-        ...PolicyItem
-      }
-      refundPolicy {
-        ...PolicyItem
-      }
-      subscriptionPolicy {
-        id
-        title
-        handle
-      }
-    }
-  }
-` as const;
