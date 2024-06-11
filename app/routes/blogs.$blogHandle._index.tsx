@@ -1,9 +1,10 @@
 import {json, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {useLoaderData, type MetaFunction} from '@remix-run/react';
 import {Pagination, getPaginationVariables} from '@shopify/hydrogen';
-import PaginationButtons from '~/components/general/PaginationButtons';
 import {ArticleItem} from '~/components/blogs/ArticleItem';
 import {BLOGS_QUERY} from '~/components/blogs/graphql/blogsQuery';
+import AutoLoad from '~/components/general/AutoLoad';
+import LoadPrevious from '~/components/general/LoadPrevious';
 
 export const meta: MetaFunction<typeof loader> = ({data}) => {
   return [{title: `Hydrogen | ${data?.blog.title ?? ''} blog`}];
@@ -48,6 +49,7 @@ export default function Blog() {
           {({nodes, isLoading, PreviousLink, NextLink}) => {
             return (
               <>
+                <LoadPrevious PreviousLink={PreviousLink} />
                 {nodes.map((article, index) => {
                   return (
                     <ArticleItem
@@ -57,11 +59,7 @@ export default function Blog() {
                     />
                   );
                 })}
-                <PaginationButtons
-                  isLoading={isLoading}
-                  NextLink={NextLink}
-                  PreviousLink={PreviousLink}
-                />
+                <AutoLoad isLoading={isLoading} NextLink={NextLink} />
               </>
             );
           }}

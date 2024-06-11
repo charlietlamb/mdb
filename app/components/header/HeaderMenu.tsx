@@ -5,6 +5,8 @@ import {useRootLoaderData} from '~/lib/root-data';
 import {NavLink} from '@remix-run/react';
 import {activeLinkStyle} from './functions/activeLinkStyle';
 import {FALLBACK_HEADER_MENU} from './graphql/fallbackHeaderMenu';
+import HeaderNavLink from './HeaderNavLink';
+import {useHeaderContext} from './context/headerContext';
 
 export function HeaderMenu({
   menu,
@@ -16,7 +18,7 @@ export function HeaderMenu({
   viewport: Viewport;
 }) {
   const {publicStoreDomain} = useRootLoaderData();
-
+  const {setHeaderKey} = useHeaderContext();
   function closeAside(event: React.MouseEvent<HTMLAnchorElement>) {
     if (viewport === 'mobile') {
       event.preventDefault();
@@ -48,17 +50,19 @@ export function HeaderMenu({
             ? new URL(item.url).pathname
             : item.url;
         return (
-          <NavLink
-            className=""
-            end
-            key={item.id}
-            onClick={closeAside}
-            prefetch="intent"
-            // style={activeLinkStyle}
-            to={url}
-          >
-            {item.title}
-          </NavLink>
+          <HeaderNavLink href={url}>
+            <NavLink
+              className=""
+              end
+              key={item.id}
+              onClick={closeAside}
+              prefetch="intent"
+              // style={activeLinkStyle}
+              to={url}
+            >
+              {item.title}
+            </NavLink>
+          </HeaderNavLink>
         );
       })}
     </nav>

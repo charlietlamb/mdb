@@ -11,7 +11,8 @@ import type {
   CustomerOrdersFragment,
   OrderItemFragment,
 } from 'customer-accountapi.generated';
-import PaginationButtons from '~/components/general/PaginationButtons';
+import AutoLoad from '~/components/general/AutoLoad';
+import LoadPrevious from '~/components/general/LoadPrevious';
 
 export const meta: MetaFunction = () => {
   return [{title: 'Orders'}];
@@ -63,14 +64,11 @@ function OrdersTable({orders}: Pick<CustomerOrdersFragment, 'orders'>) {
           {({nodes, isLoading, PreviousLink, NextLink}) => {
             return (
               <>
+                <LoadPrevious PreviousLink={PreviousLink} />
                 {nodes.map((order) => {
                   return <OrderItem key={order.id} order={order} />;
                 })}
-                <PaginationButtons
-                  isLoading={isLoading}
-                  NextLink={NextLink}
-                  PreviousLink={PreviousLink}
-                />
+                <AutoLoad isLoading={isLoading} NextLink={NextLink} />
               </>
             );
           }}

@@ -3,10 +3,8 @@ import {json, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {Pagination, getPaginationVariables, Image} from '@shopify/hydrogen';
 import {COLLECTIONS_QUERY} from '~/components/collections/graphql/collectionsQuery';
 import {CollectionsGrid} from '~/components/collections/CollectionsGrid';
-import Loading from '~/components/general/Loading';
-import PreviousPage from '~/components/general/PreviousPage';
-import NextPage from '~/components/general/NextPage';
-import PaginationButtons from '~/components/general/PaginationButtons';
+import AutoLoad from '~/components/general/AutoLoad';
+import LoadPrevious from '~/components/general/LoadPrevious';
 
 export async function loader({context, request}: LoaderFunctionArgs) {
   const paginationVariables = getPaginationVariables(request, {
@@ -29,12 +27,9 @@ export default function Collections() {
       <Pagination connection={collections}>
         {({nodes, isLoading, PreviousLink, NextLink}) => (
           <div className="flex flex-col gap-4">
+            <LoadPrevious PreviousLink={PreviousLink} />
             <CollectionsGrid collections={nodes} />
-            <PaginationButtons
-              isLoading={isLoading}
-              PreviousLink={PreviousLink}
-              NextLink={NextLink}
-            />
+            <AutoLoad isLoading={isLoading} NextLink={NextLink} />
           </div>
         )}
       </Pagination>

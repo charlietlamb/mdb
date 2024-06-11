@@ -1,19 +1,11 @@
 import {json, redirect, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {useLoaderData, Link, type MetaFunction} from '@remix-run/react';
-import {
-  Pagination,
-  getPaginationVariables,
-  Image,
-  Money,
-} from '@shopify/hydrogen';
+import {Pagination, getPaginationVariables} from '@shopify/hydrogen';
 import type {ProductItemFragment} from 'storefrontapi.generated';
-import {useVariantUrl} from '~/lib/variants';
-import Loading from '~/components/general/Loading';
-import PreviousPage from '~/components/general/PreviousPage';
-import NextPage from '~/components/general/NextPage';
 import {ProductsGrid} from '~/components/collections-all/ProductsGrid';
 import {COLLECTION_QUERY} from '~/components/collection/graphql/collectionQuery';
-import PaginationButtons from '~/components/general/PaginationButtons';
+import AutoLoad from '~/components/general/AutoLoad';
+import LoadPrevious from '~/components/general/LoadPrevious';
 
 export const meta: MetaFunction<typeof loader> = ({data}) => {
   return [{title: `Hydrogen | ${data?.collection.title ?? ''} Collection`}];
@@ -54,12 +46,9 @@ export default function Collection() {
       <Pagination connection={collection.products}>
         {({nodes, isLoading, PreviousLink, NextLink}) => (
           <>
+            <LoadPrevious PreviousLink={PreviousLink} />
             <ProductsGrid products={nodes as ProductItemFragment[]} />
-            <PaginationButtons
-              isLoading={isLoading}
-              NextLink={NextLink}
-              PreviousLink={PreviousLink}
-            />
+            <AutoLoad isLoading={isLoading} NextLink={NextLink} />
           </>
         )}
       </Pagination>

@@ -2,11 +2,8 @@ import {Link} from '@remix-run/react';
 import {Image, Money, Pagination} from '@shopify/hydrogen';
 import {SearchQuery} from 'storefrontapi.generated';
 import {applyTrackingParams} from '~/lib/search';
-import SearchResultsLoading from '~/components/general/Loading';
-import Loading from '~/components/general/Loading';
-import NextPage from '~/components/general/NextPage';
-import PreviousPage from '~/components/general/PreviousPage';
-import PaginationButtons from '../general/PaginationButtons';
+import AutoLoad from '../general/AutoLoad';
+import LoadPrevious from '../general/LoadPrevious';
 
 export function SearchResultsProductsGrid({
   products,
@@ -50,12 +47,9 @@ export function SearchResultsProductsGrid({
           });
           return (
             <div>
+              <LoadPrevious PreviousLink={PreviousLink} />
               <div>{ItemsMarkup}</div>
-              <PaginationButtons
-                isLoading={isLoading}
-                NextLink={NextLink}
-                PreviousLink={PreviousLink}
-              />
+              <AutoLoad isLoading={isLoading} NextLink={NextLink} />
             </div>
           );
         }}
