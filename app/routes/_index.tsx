@@ -4,9 +4,10 @@ import {RecommendedProducts} from '~/components/home/RecommendedProducts';
 import {FeaturedCollection} from '~/components/home/FeaturedCollection';
 import {FEATURED_COLLECTION_QUERY} from '~/components/home/FeaturedCollectionQuery';
 import {RECOMMENDED_PRODUCTS_QUERY} from '~/components/home/RecommendedProductsQuery';
+import Home from '~/components/home/Home';
 
 export const meta: MetaFunction = () => {
-  return [{title: 'Hydrogen | Home'}];
+  return [{title: 'Your Own Melody'}];
 };
 
 export async function loader({context}: LoaderFunctionArgs) {
@@ -20,10 +21,5 @@ export async function loader({context}: LoaderFunctionArgs) {
 
 export default function Homepage() {
   const data = useLoaderData<typeof loader>();
-  return (
-    <div className="flex flex-col">
-      <FeaturedCollection collection={data.featuredCollection} />
-      <RecommendedProducts products={data.recommendedProducts} />
-    </div>
-  );
+  return <Home />;
 }

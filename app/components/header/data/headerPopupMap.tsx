@@ -1,4 +1,3 @@
-import React from 'react';
-import HeaderPopupX from '../popup/HeaderPopupX';
+import Occasions from '../whos/HeaderWhos';
 
-export const headerPopupMap = new Map([['test', <HeaderPopupX />]]);
+export const headerPopupMap = new Map([['occasions', <Occasions />]]);

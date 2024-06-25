@@ -16,7 +16,7 @@ export default function HeaderPopup() {
       {headerKey && (
         <motion.div
           className={cn(
-            'top-full border-primary-800 opacity-1 absolute left-0 z-0 w-full bg-white border-b rounded-b-lg shadow-md',
+            'top-full opacity-1 absolute left-0 z-0 w-full bg-primary-200 lg:px-60 p-2',
           )}
           initial="hidden"
           animate="visible"
@@ -24,7 +24,7 @@ export default function HeaderPopup() {
           variants={dropdown}
           transition={{duration: 0.6}}
         >
-          {headerPopupMap.get('test')}
+          {headerPopupMap.get(headerKey)}
         </motion.div>
       )}
     </AnimatePresence>

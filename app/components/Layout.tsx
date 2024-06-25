@@ -7,6 +7,7 @@ import type {
 } from 'storefrontapi.generated';
 import {Footer} from '~/components/footer/Footer';
 import {Header} from '~/components/header/Header';
+import Banner from './banner/Banner';
 
 export type LayoutProps = {
   cart: Promise<CartApiQueryFragment | null>;
@@ -25,8 +26,11 @@ export function Layout({
 }: LayoutProps) {
   return (
     <>
+      <Banner text={'This is some banner text'} />
       {header && <Header header={header} cart={cart} isLoggedIn={isLoggedIn} />}
-      <main className="flex-grow">{children}</main>
+      <main className="bg-primary-200 duration-600 flex-grow transition-all">
+        {children}
+      </main>
       <Suspense>
         <Await resolve={footer}>
           {(footer) => <Footer menu={footer?.menu} shop={header?.shop} />}

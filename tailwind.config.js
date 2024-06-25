@@ -53,6 +53,17 @@ module.exports = {
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
+          50: 'hsl(var(--accent-50))',
+          100: 'hsl(var(--accent-100))',
+          200: 'hsl(var(--accent-200))',
+          300: 'hsl(var(--accent-300))',
+          400: 'hsl(var(--accent-400))',
+          500: 'hsl(var(--accent-500))',
+          600: 'hsl(var(--accent-600))',
+          700: 'hsl(var(--accent-700))',
+          800: 'hsl(var(--accent-800))',
+          900: 'hsl(var(--accent-900))',
+          950: 'hsl(var(--accent-950))',
         },
         popover: {
           DEFAULT: 'hsl(var(--popover))',
@@ -77,10 +88,20 @@ module.exports = {
           from: {height: 'var(--radix-accordion-content-height)'},
           to: {height: '0'},
         },
+        'accordion-right': {
+          from: {width: '0'},
+          to: {width: 'var(--radix-accordion-content-width)'},
+        },
+        'accordion-left': {
+          from: {width: 'var(--radix-accordion-content-width)'},
+          to: {width: '0'},
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'accordion-right': 'accordion-right 0.2s ease-out',
+        'accordion-left': 'accordion-left 0.2s ease-out',
       },
     },
   },

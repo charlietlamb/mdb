@@ -12,11 +12,9 @@ export const meta: MetaFunction<typeof loader> = () => {
 
 export async function loader({request, context}: LoaderFunctionArgs) {
   const {storefront} = context;
-  console.log(request);
   const paginationVariables = getPaginationVariables(request, {
     pageBy: 8,
   });
-  console.log(paginationVariables);
 
   const {products} = await storefront.query(CATALOG_QUERY, {
     variables: {...paginationVariables},

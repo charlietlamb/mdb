@@ -1,5 +1,5 @@
 {
-  "name": "hydrogen-tailwind",
+  "name": "your-own-melody",
   "private": true,
   "sideEffects": false,
   "version": "2024.4.4",
@@ -9,12 +9,15 @@
     "dev": "shopify hydrogen dev --codegen",
     "preview": "npm run build && shopify hydrogen preview",
     "lint": "eslint --no-error-on-unmatched-pattern --ext .js,.ts,.jsx,.tsx .",
+    "tailwind": "npx tailwindcss -i app/styles/tailwind.css -o app/styles/tailwind.min.css --watch ",
     "typecheck": "tsc --noEmit",
     "codegen": "shopify hydrogen codegen"
   },
   "prettier": "@shopify/prettier-config",
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-progress": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@remix-run/react": "^2.8.0",
     "@remix-run/server-runtime": "^2.8.0",
@@ -32,6 +35,7 @@
     "lucide-react": "^0.378.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-player": "^2.16.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7"
   },

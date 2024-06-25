@@ -39,31 +39,30 @@ export function HeaderMenu({
           Home
         </NavLink>
       )}
-      {(menu || FALLBACK_HEADER_MENU).items.map((item) => {
-        if (!item.url) return null;
-
-        // if the url is internal, we strip the domain
-        const url =
-          item.url.includes('myshopify.com') ||
-          item.url.includes(publicStoreDomain) ||
-          item.url.includes(primaryDomainUrl)
-            ? new URL(item.url).pathname
-            : item.url;
-        return (
-          <HeaderNavLink href={url} key={item.id}>
-            <NavLink
-              className=""
-              end
-              onClick={closeAside}
-              prefetch="intent"
-              // style={activeLinkStyle}
-              to={url}
-            >
-              {item.title}
-            </NavLink>
-          </HeaderNavLink>
-        );
-      })}
+      <HeaderNavLink href={'occasions'}>
+        <NavLink
+          className="font-semibold"
+          end
+          onClick={closeAside}
+          prefetch="intent"
+          // style={activeLinkStyle}
+          to="/occasions"
+        >
+          Occasions
+        </NavLink>
+      </HeaderNavLink>
+      <HeaderNavLink href={'contact'}>
+        <NavLink
+          className="font-semibold"
+          end
+          onClick={closeAside}
+          prefetch="intent"
+          // style={activeLinkStyle}
+          to={'/contact'}
+        >
+          Contact
+        </NavLink>
+      </HeaderNavLink>
     </nav>
   );
 }
