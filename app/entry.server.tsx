@@ -20,10 +20,11 @@ export default async function handleRequest(
     imgSrc: [
       "'self'",
       'https://image.mux.com',
-      'https://avatar.iran.liara.run',
       'data:',
       'https://images.unsplash.com',
       'https://cloudflare-ipfs.com',
+      'https://avatars.githubusercontent.com',
+      'https://ipfs.io',
     ],
     mediaSrc: [
       "'self'",

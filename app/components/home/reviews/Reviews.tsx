@@ -10,7 +10,12 @@ export default function Reviews() {
       </h3>
       <div className="flex">
         <AnimatedTooltip
-          items={items.map((item) => ({...item, image: faker.image.avatar()}))}
+          items={Array.from({length: 7}, (_, index) => ({
+            id: index,
+            image: faker.image.avatarLegacy(),
+            name: faker.person.fullName(),
+            designation: faker.lorem.sentence(),
+          }))}
         />
       </div>
     </div>

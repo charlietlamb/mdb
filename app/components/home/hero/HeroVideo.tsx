@@ -6,12 +6,11 @@ export default function HeroVideo() {
     <div className="relative w-full">
       <MuxPlayer
         streamType="on-demand"
-        playbackId="pNnVdHi6tbMQgCFI3BimkTpvHPTlvHogEkL801llTQU00"
+        playbackId="00a8vahkdQR5YUW005Y9d7tJe1S00g9Q7QODUljOF6ohbk"
         metadataVideoTitle="Your Own Melody"
         metadataViewerUserId="Create Your Own Melody"
         primaryColor="#e4e4e7"
         secondaryColor="#0F172A"
-        // autoPlay
         className="relative z-10 w-full min-w-full overflow-hidden rounded-lg"
         style={
           {

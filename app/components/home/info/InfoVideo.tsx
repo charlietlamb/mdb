@@ -1,5 +1,4 @@
 import MuxPlayer from '@mux/mux-player-react';
-import HeroVideo from '../hero/HeroVideo';
 import {Button} from '~/components/ui/button';
 
 export default function InfoVideo() {
@@ -15,12 +14,11 @@ export default function InfoVideo() {
       </div>
       <MuxPlayer
         streamType="on-demand"
-        playbackId="pNnVdHi6tbMQgCFI3BimkTpvHPTlvHogEkL801llTQU00"
+        playbackId="00a8vahkdQR5YUW005Y9d7tJe1S00g9Q7QODUljOF6ohbk"
         metadataVideoTitle="Your Own Melody"
         metadataViewerUserId="Create Your Own Melody"
         primaryColor="#e4e4e7"
         secondaryColor="#0F172A"
-        poster="https://images.unsplash.com/photo-1484972759836-b93f9ef2b293"
         // autoPlay
 
         className="relative z-10 overflow-hidden rounded-lg"
