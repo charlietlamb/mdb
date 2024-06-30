@@ -1,10 +1,18 @@
-import WhoAccordion from './WhoAccordion';
+import WhoTabs from './WhoTabs';
 
 export default function Who() {
   return (
-    <div className="padding-main flex flex-col items-center w-full gap-4 text-3xl font-bold bg-indigo-200">
-      <h3>Who are you buying for?</h3>
-      <WhoAccordion />
+    <div className="padding-main bg-accent-500 bg-dot-white/50 flex flex-col w-full gap-4 py-8">
+      <h3 className="text-primary-100 text-5xl font-bold">
+        Over 350,000 original songs created for people just like you
+      </h3>
+      <p className="text-primary-200 text-xl">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, maxime
+        consequatur. Tempore quisquam veritatis incidunt quaerat, nesciunt
+        excepturi tempora quam, ea quia ad aspernatur eum dolore aliquam
+        provident asperiores repellendus.
+      </p>
+      <WhoTabs />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import {HeaderCtas} from './HeaderCtas';
 import {HeaderProps} from './types/HeaderProps';
 import HeaderAccount from './HeaderAccount';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {HeaderContext} from './context/headerContext';
 import HeaderPopup from './HeaderPopup';
 import {motion} from 'framer-motion';
@@ -14,16 +14,28 @@ import {Button} from '~/components/ui/button';
 export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
   const [headerKey, setHeaderKey] = useState<string | null>(null);
+  const [hideShadow, setHideShadow] = useState(false);
+  useEffect(() => {
+    if (headerKey === null) {
+      setTimeout(() => {
+        setHideShadow(false);
+      }, 610);
+    } else {
+      setHideShadow(true);
+    }
+  }, [headerKey]);
   return (
     <HeaderContext.Provider value={{headerKey, setHeaderKey}}>
       <motion.header
-        className="bg-primary-200 sticky top-0 z-10 px-4"
+        className={cn(
+          'bg-primary-200 shadow-black/10 sticky top-0 z-40 flex flex-col shadow-md',
+          hideShadow && 'shadow-none',
+        )}
         onMouseLeave={() => setHeaderKey(null)}
-        layout
       >
         <div
           className={cn(
-            'flex items-center bg-primary-200 p-4 relative z-10 rounded-b-lg 2xl:px-60 xl:px-40 lg:px-20 duration-600 transition-all',
+            'flex items-center bg-primary-200 relative z-20 rounded-b-lg p-4 padding-main duration-600 transition-all',
             !!headerKey && 'rounded-none transition duration-500',
           )}
         >

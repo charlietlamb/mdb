@@ -18,12 +18,10 @@ export default defineConfig({
     }),
     tsconfigPaths(),
   ],
+
   build: {
     // Allow a strict Content-Security-Policy
     // withtout inlining assets as base64:
     assetsInlineLimit: 0,
-  },
-  optimizeDeps: {
-    include: ['react-player'],
   },
 });

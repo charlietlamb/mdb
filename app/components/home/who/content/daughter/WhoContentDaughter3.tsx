@@ -1,9 +1,9 @@
 import MuxPlayer from '@mux/mux-player-react';
-import {Button} from '~/components/ui/button';
+import React from 'react';
 
-export default function HeroVideo() {
+export default function WhoContentDaughterCard3() {
   return (
-    <div className="relative w-full">
+    <div className="bg-primary-200 ring-4 ring-offset-4 ring-offset-accent-500 ring-primary-200 relative flex flex-col p-2 rounded-lg">
       <MuxPlayer
         streamType="on-demand"
         playbackId="pNnVdHi6tbMQgCFI3BimkTpvHPTlvHogEkL801llTQU00"
@@ -12,7 +12,7 @@ export default function HeroVideo() {
         primaryColor="#e4e4e7"
         secondaryColor="#0F172A"
         // autoPlay
-        className="relative z-10 w-full min-w-full overflow-hidden rounded-lg"
+        className="absolute inset-0 z-10 min-w-full min-h-full overflow-hidden rounded-lg"
         style={
           {
             '--seek-backward-button': 'none',
@@ -32,24 +32,6 @@ export default function HeroVideo() {
           } as React.CSSProperties
         }
       />
-      <div
-        className="absolute inset-0 z-10 flex flex-col justify-end"
-        style={{pointerEvents: 'none'}}
-      >
-        <div className="h-1/3 relative z-20 flex flex-col items-center justify-center gap-4">
-          <div className="flex flex-col items-center">
-            <h1 className="text-primary-900 text-6xl font-bold">
-              Create Your Own Melody
-            </h1>
-            <p className="text-primary-700 text-xl">
-              Get a one of a kind song for{' '}
-              <span className="text-accent-500">someone you love</span>
-            </p>
-          </div>
-          <Button>Start Your Song</Button>
-        </div>
-        <div className="top-1/2 bg-gradient-to-b from-transparent via-50% via-primary-200/90 to-primary-200 absolute bottom-0 left-0 right-0" />
-      </div>
     </div>
   );
 }

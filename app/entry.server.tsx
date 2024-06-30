@@ -10,7 +10,40 @@ export default async function handleRequest(
   responseHeaders: Headers,
   remixContext: EntryContext,
 ) {
-  const {nonce, header, NonceProvider} = createContentSecurityPolicy();
+  const {nonce, header, NonceProvider} = createContentSecurityPolicy({
+    scriptSrc: [
+      'https://cdn.shopify.com',
+      'https://shopify.com',
+      'http://localhost:*',
+      'https://www.gstatic.com',
+    ],
+    imgSrc: [
+      "'self'",
+      'https://image.mux.com',
+      'https://avatar.iran.liara.run',
+      'data:',
+      'https://images.unsplash.com',
+      'https://cloudflare-ipfs.com',
+    ],
+    mediaSrc: [
+      "'self'",
+      'http://localhost:3000',
+      'https://image.mux.com',
+      'blob:',
+    ],
+    connectSrc: [
+      "'self'",
+      'https://monorail-edge.shopifysvc.com',
+      'http://localhost:*',
+      'ws://localhost:*',
+      'ws://127.0.0.1:*',
+      'ws://*.tryhydrogen.dev:*',
+      'https://inferred.litix.io',
+      'https://stream.mux.com',
+      'https://*.cfcdn.mux.com',
+      'https://*.fastly.mux.com',
+    ],
+  });
 
   const body = await renderToReadableStream(
     <NonceProvider>

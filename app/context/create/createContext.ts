@@ -5,6 +5,14 @@ interface CreateSongContext {
   setPage: Dispatch<SetStateAction<number>>;
   next: boolean;
   setNext: Dispatch<SetStateAction<boolean>>;
+  name: string;
+  setName: Dispatch<SetStateAction<string>>;
+  email: string;
+  setEmail: Dispatch<SetStateAction<string>>;
+  occasion: string | null;
+  setOccasion: Dispatch<SetStateAction<string | null>>;
+  completed: boolean[];
+  setCompleted: Dispatch<SetStateAction<boolean[]>>;
 }
 
 export const CreateSongContext = createContext<CreateSongContext | undefined>(

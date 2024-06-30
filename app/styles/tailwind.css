@@ -141,5 +141,25 @@ html {
 }
 
 .padding-main {
-  @apply lg:px-20 xl:px-40 2xl:px-60;
+  @apply lg:px-40 xl:px-60 2xl:px-80 px-8;
+}
+
+@screen md {
+  .dialog-content-md {
+    max-height: calc(100vh - 64px);
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+  width: 0px;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.body-no-margin.body-no-margin {
+  margin-right: 0 !important;
 }
