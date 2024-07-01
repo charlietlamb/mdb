@@ -1,5 +1,3 @@
-import {Mic} from 'lucide-react';
-
 export default function InfoContent() {
   return (
     <div className="relative flex flex-col items-center justify-center">

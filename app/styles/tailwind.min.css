@@ -899,6 +899,10 @@ body {
   height: var(--radix-select-trigger-height);
 }
 
+.h-12 {
+  height: 3rem;
+}
+
 .max-h-full {
   max-height: 100%;
 }
@@ -977,6 +981,10 @@ body {
 
 .w-3\.5 {
   width: 0.875rem;
+}
+
+.w-12 {
+  width: 3rem;
 }
 
 .min-w-full {
