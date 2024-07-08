@@ -2,7 +2,7 @@ import {motion} from 'framer-motion';
 
 export default function GradientBackground() {
   return (
-    <div className="absolute inset-0 z-0 opacity-50">
+    <div className="opacity-40 absolute inset-0 z-0">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"

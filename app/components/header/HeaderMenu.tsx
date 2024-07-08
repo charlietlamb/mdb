@@ -1,49 +1,26 @@
 import {HeaderQuery} from 'storefrontapi.generated';
 import {HeaderProps} from './types/HeaderProps';
-import {Viewport} from './types/Viewport';
 import {useRootLoaderData} from '~/lib/root-data';
 import {NavLink} from '@remix-run/react';
 import {activeLinkStyle} from './functions/activeLinkStyle';
 import {FALLBACK_HEADER_MENU} from './graphql/fallbackHeaderMenu';
 import HeaderNavLink from './HeaderNavLink';
 import {useHeaderContext} from './context/headerContext';
+import {cn} from '~/lib/utils';
 
-export function HeaderMenu({
-  menu,
-  primaryDomainUrl,
-  viewport,
-}: {
-  menu: HeaderProps['header']['menu'];
-  primaryDomainUrl: HeaderQuery['shop']['primaryDomain']['url'];
-  viewport: Viewport;
-}) {
-  const {publicStoreDomain} = useRootLoaderData();
-  const {setHeaderKey} = useHeaderContext();
-  function closeAside(event: React.MouseEvent<HTMLAnchorElement>) {
-    if (viewport === 'mobile') {
-      event.preventDefault();
-      window.location.href = event.currentTarget.href;
-    }
-  }
-
+export function HeaderMenu({mobile = false}: {mobile?: boolean}) {
   return (
-    <nav className="flex justify-center gap-4" role="navigation">
-      {viewport === 'mobile' && (
-        <NavLink
-          end
-          onClick={closeAside}
-          prefetch="intent"
-          style={activeLinkStyle}
-          to="/"
-        >
-          Home
-        </NavLink>
+    <nav
+      className={cn(
+        'md:flex justify-center hidden gap-4',
+        mobile && 'flex-col gap-1 flex items-center text-lg',
       )}
+      role="navigation"
+    >
       <HeaderNavLink href={'occasions'}>
         <NavLink
           className="font-semibold"
           end
-          onClick={closeAside}
           prefetch="intent"
           // style={activeLinkStyle}
           to="/occasions"
@@ -55,10 +32,9 @@ export function HeaderMenu({
         <NavLink
           className="font-semibold"
           end
-          onClick={closeAside}
           prefetch="intent"
           // style={activeLinkStyle}
-          to={'/contact'}
+          to="/contact"
         >
           Contact
         </NavLink>

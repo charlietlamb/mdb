@@ -1,4 +1,3 @@
-import {useCreateSongContext} from '~/context/create/createContext';
 import {
   Select,
   SelectContent,
@@ -7,24 +6,34 @@ import {
   SelectTrigger,
   SelectValue,
 } from '../ui/select';
+import {useAppDispatch, useAppSelector} from '~/lib/hooks';
+import {setPage} from '~/store/create/createSlice';
 
 export default function CreateSongSelect() {
-  const {page, setPage} = useCreateSongContext();
+  const {page} = useAppSelector((state) => state.create);
+  const dispatch = useAppDispatch();
   return (
     <Select
-      defaultValue=""
+      value={page.toString()}
       onValueChange={(e) => {
-        setPage(parseInt(e));
+        dispatch(setPage(parseInt(e)));
       }}
     >
-      <SelectTrigger>
-        <SelectValue placeholder={`Item ${1}`} />
+      <SelectTrigger className="w-auto font-bold uppercase">
+        <SelectValue
+          placeholder={`Step ${page} of 5`}
+          className="placeholder:font-bold uppercase"
+        />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          {Array.from({length: 7}, (_, index) => (
-            <SelectItem key={index} value={index.toString()}>
-              Item {index + 1}
+          {Array.from({length: 5}, (_, index) => (
+            <SelectItem
+              key={index}
+              value={index.toString()}
+              className="font-bold uppercase"
+            >
+              Step {index + 1} of 5
             </SelectItem>
           ))}
         </SelectGroup>

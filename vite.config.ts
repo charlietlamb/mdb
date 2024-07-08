@@ -5,6 +5,11 @@ import {vitePlugin as remix} from '@remix-run/dev';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
+  ssr: {
+    optimizeDeps: {
+      include: ['use-sync-external-store/with-selector.js', 'react-responsive'],
+    },
+  },
   plugins: [
     hydrogen(),
     oxygen(),
@@ -18,10 +23,5 @@ export default defineConfig({
     }),
     tsconfigPaths(),
   ],
-
-  build: {
-    // Allow a strict Content-Security-Policy
-    // withtout inlining assets as base64:
-    assetsInlineLimit: 0,
-  },
+  build: {assetsInlineLimit: 0},
 });

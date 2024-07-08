@@ -25,6 +25,10 @@ module.exports = {
       },
     },
     extend: {
+      objectPosition: {
+        'top-25': 'center 25%',
+        'top-75': 'center 75%',
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

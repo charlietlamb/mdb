@@ -10,9 +10,13 @@ import HeaderLogo from './HeaderLogo';
 import {HeaderMenu} from './HeaderMenu';
 import CreateSongButton from './CreateSongButton';
 import {Button} from '~/components/ui/button';
+import {HeaderMenuMobileToggle} from './HeaderMenuMobileToggle';
+import {useMediaQuery} from 'react-responsive';
+import {MicVocal} from 'lucide-react';
 
 export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
+  const isSmallScreen = useMediaQuery({query: '(max-width: 768px)'});
   const [headerKey, setHeaderKey] = useState<string | null>(null);
   const [hideShadow, setHideShadow] = useState(false);
   useEffect(() => {
@@ -24,6 +28,7 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
       setHideShadow(true);
     }
   }, [headerKey]);
+
   return (
     <HeaderContext.Provider value={{headerKey, setHeaderKey}}>
       <motion.header
@@ -36,23 +41,25 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
         <div
           className={cn(
             'flex items-center bg-primary-200 relative z-20 rounded-b-lg p-4 padding-main duration-600 transition-all',
-            !!headerKey && 'rounded-none transition duration-500',
+            !!headerKey &&
+              !isSmallScreen &&
+              'rounded-none transition duration-500',
           )}
         >
           <HeaderLogo className="flex-grow" />
           <div className="flex items-center gap-8">
-            <HeaderMenu
-              menu={menu}
-              viewport="desktop"
-              primaryDomainUrl={header.shop.primaryDomain.url}
-            />
-            <div className="flex items-center gap-2">
+            <HeaderMenu />
+            {/* <div className="flex items-center gap-2">
               <HeaderAccount isLoggedIn={isLoggedIn} />
               <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
-            </div>
-            <CreateSongButton>
-              <Button className="font-bold uppercase">Start your song</Button>
+            </div> */}
+            <CreateSongButton hidden={isSmallScreen}>
+              <Button className="flex items-center gap-2 font-bold uppercase">
+                Start your song
+                <MicVocal />
+              </Button>
             </CreateSongButton>
+            <HeaderMenuMobileToggle />
           </div>
         </div>
         <HeaderPopup />

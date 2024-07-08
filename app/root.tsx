@@ -16,6 +16,7 @@ import appStyles from './styles/app.css?url';
 import tailwindStyles from './styles/tailwind.css?url';
 import tailwindMinStyles from './styles/tailwind.min.css?url';
 import {Layout} from '~/components/Layout';
+import StoreProvider from './components/providers/StoreProvider';
 
 /**
  * This is important to avoid re-fetching root queries on sub-navigations
@@ -106,13 +107,15 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="flex flex-col min-h-screen">
-        <Layout {...data}>
-          <Outlet />
-        </Layout>
-        <ScrollRestoration nonce={nonce} />
-        <Scripts nonce={nonce} />
-      </body>
+      <StoreProvider>
+        <body className="flex flex-col min-h-screen">
+          <Layout {...data}>
+            <Outlet />
+          </Layout>
+          <ScrollRestoration nonce={nonce} />
+          <Scripts nonce={nonce} />
+        </body>
+      </StoreProvider>
     </html>
   );
 }

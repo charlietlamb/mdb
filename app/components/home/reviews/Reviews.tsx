@@ -11,7 +11,7 @@ export default function Reviews() {
   }));
   return (
     <div className="padding-main bg-accent-500 bg-dot-white/50 flex flex-col py-16">
-      <h3 className="text-4xl font-bold text-white">
+      <h3 className="h2-size font-bold text-white">
         Join hundreds of thousands who’ve created their own melody
       </h3>
       <div className="flex">

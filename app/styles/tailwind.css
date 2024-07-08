@@ -163,3 +163,23 @@ html {
 .body-no-margin.body-no-margin {
   margin-right: 0 !important;
 }
+
+.h1-size {
+  @apply md:text-4xl lg:text-6xl text-3xl;
+}
+
+.h2-size {
+  @apply md:text-3xl lg:text-4xl text-2xl;
+}
+
+.h3-size {
+  @apply md:text-lg lg:text-xl;
+}
+
+.h4-size {
+  @apply md:text-base lg:text-lg;
+}
+
+.h5-size {
+  @apply md:text-base lg:text-lg text-sm;
+}

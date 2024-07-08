@@ -9,7 +9,6 @@ export function HeaderCtas({
 }: Pick<HeaderProps, 'isLoggedIn' | 'cart'>) {
   return (
     <nav role="navigation">
-      <HeaderMenuMobileToggle />
       <div className="md:flex items-center hidden gap-2">
         <CartToggle cart={cart} />
         <Search />

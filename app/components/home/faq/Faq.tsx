@@ -10,7 +10,7 @@ import {faqData} from '~/data/faq/faqData';
 export default function Faq() {
   return (
     <div className="padding-main flex flex-col items-center gap-8 p-8">
-      <h3 className="text-3xl font-bold">Frequently Asked Questions</h3>
+      <h3 className="h2-size font-bold">Frequently Asked Questions</h3>
       <Accordion
         type="single"
         className="divide-primary-300 flex flex-col items-center w-full divide-y"
@@ -23,10 +23,10 @@ export default function Faq() {
               value={faq.question}
               className="w-full"
             >
-              <AccordionTrigger className="text-2xl font-bold">
+              <AccordionTrigger className="h3-size font-bold">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-xl">
+              <AccordionContent className="h4-size">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>

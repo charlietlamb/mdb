@@ -33,7 +33,12 @@ export function CartDiscounts({
       {/* Show an input to apply a discount */}
       <UpdateDiscountForm discountCodes={codes}>
         <div className="flex gap-2">
-          <Input type="text" name="discountCode" placeholder="Discount code" />
+          <Input
+            type="text"
+            name="discountCode"
+            placeholder="Discount code"
+            className="border-primary-900 bg-transparent border"
+          />
           <Button type="submit">
             <TicketPlus />
           </Button>

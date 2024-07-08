@@ -1,12 +1,13 @@
 import MuxPlayer from '@mux/mux-player-react';
+import {MicVocal} from 'lucide-react';
 import {Button} from '~/components/ui/button';
 
 export default function InfoVideo() {
   return (
     <div className="relative z-10 flex flex-col items-center w-full gap-8 py-8">
       <div className="flex flex-col items-center gap-2">
-        <h3 className="text-5xl font-bold">How it works</h3>
-        <p className="text-primary-700 text-xl text-center">
+        <h3 className="h2-size font-bold">How it works</h3>
+        <p className="text-primary-700 h4-size text-center">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius minus
           saepe numquam voluptatum quae porro id atque laborum dolorum? Sequi at
           dolores nesciunt qui dicta itaque minima illo ea provident?
@@ -41,12 +42,15 @@ export default function InfoVideo() {
           } as React.CSSProperties
         }
       />
-      <p className="text-primary-700 text-xl text-center">
+      <p className="text-primary-700 h4-size text-center">
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius minus
         saepe numquam voluptatum quae porro id atque laborum dolorum? Sequi at
         dolores nesciunt qui dicta itaque minima illo ea provident?
       </p>
-      <Button className="text-lg font-bold uppercase">Start your song</Button>
+      <Button className="flex items-center gap-2 text-lg font-bold capitalize">
+        Start your song
+        <MicVocal />
+      </Button>
     </div>
   );
 }

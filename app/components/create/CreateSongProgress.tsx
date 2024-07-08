@@ -1,17 +1,19 @@
 import {Progress} from '~/components/ui/progress';
-import {useCreateSongContext} from '~/context/create/createContext';
 import {Button} from '../ui/button';
+import {useAppDispatch, useAppSelector} from '~/lib/hooks';
+import {setNext, setPage} from '~/store/create/createSlice';
 
 export default function CreateSongProgress() {
-  const {page, setPage, next, setNext} = useCreateSongContext();
+  const {page, next, completed} = useAppSelector((state) => state.create);
+  const dispatch = useAppDispatch();
   return (
     <div className="flex flex-col items-center gap-4 mt-auto">
       <div className="flex gap-2">
         <Button
           disabled={page === 0}
           onClick={() => {
-            page === 1 && setNext(true);
-            setPage(page - 1);
+            if (completed[page - 1]) dispatch(setNext(true));
+            dispatch(setPage(page - 1));
           }}
         >
           Prev
@@ -19,15 +21,15 @@ export default function CreateSongProgress() {
         <Button
           disabled={!next}
           onClick={() => {
-            setPage(page + 1);
-            setNext(false);
+            if (completed[page + 1]) dispatch(setNext(true));
+            dispatch(setPage(page + 1));
           }}
         >
           Next
         </Button>
       </div>
       <Progress
-        value={(page / 8) * 100}
+        value={(page / 4) * 100}
         className="transition-all duration-1000"
       />
     </div>

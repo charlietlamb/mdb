@@ -1,10 +1,11 @@
 import {defer, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {useLoaderData, type MetaFunction} from '@remix-run/react';
-import {RecommendedProducts} from '~/components/home/RecommendedProducts';
-import {FeaturedCollection} from '~/components/home/FeaturedCollection';
-import {FEATURED_COLLECTION_QUERY} from '~/components/home/FeaturedCollectionQuery';
-import {RECOMMENDED_PRODUCTS_QUERY} from '~/components/home/RecommendedProductsQuery';
 import Home from '~/components/home/Home';
+import {GET_PRODUCT_BY_ID_QUERY} from '~/graphql/products/GetProductById';
+import {Product} from '@shopify/hydrogen/storefront-api-types';
+import {useAppDispatch} from '~/lib/hooks';
+import {setProduct} from '~/store/product/productSlice';
+import {useEffect} from 'react';
 
 export const meta: MetaFunction = () => {
   return [{title: 'Your Own Melody'}];
@@ -12,14 +13,17 @@ export const meta: MetaFunction = () => {
 
 export async function loader({context}: LoaderFunctionArgs) {
   const {storefront} = context;
-  const {collections} = await storefront.query(FEATURED_COLLECTION_QUERY);
-  const featuredCollection = collections.nodes[0];
-  const recommendedProducts = storefront.query(RECOMMENDED_PRODUCTS_QUERY);
+  const songProduct = await storefront.query(GET_PRODUCT_BY_ID_QUERY, {
+    variables: {
+      id: 'gid://shopify/Product/8916347060562',
+    },
+  });
 
-  return defer({featuredCollection, recommendedProducts});
+  return defer(songProduct.product as Product);
 }
 
 export default function Homepage() {
-  const data = useLoaderData<typeof loader>();
-  return <Home />;
+  const song: Product = useLoaderData<typeof loader>();
+
+  return <Home song={song} />;
 }
