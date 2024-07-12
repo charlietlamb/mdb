@@ -1,9 +1,16 @@
 import HeroVideo from './HeroVideo';
+import {motion} from 'framer-motion';
 
 export default function Hero() {
   return (
-    <div className="padding-main flex flex-col items-center">
+    <motion.div
+      className="padding-main flex flex-col items-center"
+      initial={{opacity: 0}}
+      whileInView={{opacity: 1}}
+      transition={{duration: 2}}
+      viewport={{amount: 'some'}}
+    >
       <HeroVideo />
-    </div>
+    </motion.div>
   );
 }

@@ -15,7 +15,7 @@ export default function Home({song}: {song: Product}) {
     dispatch(setProduct(song));
   }, []);
   return (
-    <div className="bg-dot-black/20 bg-primary-200 flex flex-col gap-8 py-8">
+    <div className="bg-dot-black/20 bg-primary-200 flex flex-col gap-8 py-4">
       <Hero />
       <Info />
       <Who />

@@ -1,6 +1,14 @@
+import {motion} from 'framer-motion';
+
 export default function StatsNums() {
   return (
-    <div className="md:grid-cols-3 md:gap-0 grid w-full grid-cols-1 gap-4 my-8">
+    <motion.div
+      className="md:grid-cols-3 md:gap-0 grid w-full grid-cols-1 gap-4 my-8"
+      initial={{opacity: 0, x: 100}}
+      whileInView={{opacity: 1, x: 0}}
+      transition={{duration: 1}}
+      viewport={{once: true}}
+    >
       <div className="flex flex-col items-center">
         <p className="text-5xl font-bold">
           350<span className="h3-size">k+</span>
@@ -29,6 +37,6 @@ export default function StatsNums() {
           CREATED
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 }

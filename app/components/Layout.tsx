@@ -26,7 +26,7 @@ export function Layout({
 }: LayoutProps) {
   return (
     <>
-      <Banner text={'This is some banner text'} />
+      <Banner />
       {header && <Header header={header} cart={cart} isLoggedIn={isLoggedIn} />}
       <main className="bg-primary-200 duration-600 flex-grow transition-all">
         {children}

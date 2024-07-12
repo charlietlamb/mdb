@@ -7,6 +7,7 @@ import {FALLBACK_HEADER_MENU} from './graphql/fallbackHeaderMenu';
 import HeaderNavLink from './HeaderNavLink';
 import {useHeaderContext} from './context/headerContext';
 import {cn} from '~/lib/utils';
+import {email} from '~/data/email/email';
 
 export function HeaderMenu({mobile = false}: {mobile?: boolean}) {
   return (
@@ -28,17 +29,11 @@ export function HeaderMenu({mobile = false}: {mobile?: boolean}) {
           Occasions
         </NavLink>
       </HeaderNavLink>
-      <HeaderNavLink href={'contact'}>
-        <NavLink
-          className="font-semibold"
-          end
-          prefetch="intent"
-          // style={activeLinkStyle}
-          to="/contact"
-        >
-          Contact
-        </NavLink>
-      </HeaderNavLink>
+      <a href={`mailto:${email}`}>
+        <HeaderNavLink href={'contact'}>
+          <p className="font-semibold">Contact</p>
+        </HeaderNavLink>
+      </a>
     </nav>
   );
 }

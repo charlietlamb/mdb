@@ -1,6 +1,9 @@
 import {AnimatedTooltip} from '~/components/aceternity/AnimatedTooltip';
-import ReviewSlider from './ReviewSlider';
 import {faker} from '@faker-js/faker';
+import {motion} from 'framer-motion';
+import UpworkDialog from '~/components/upwork/UpworkDialog';
+import {upworkData} from '~/components/upwork/data/upworkData';
+import {UpworkDataType} from '~/components/upwork/data/UpworkDataType';
 
 export default function Reviews() {
   const reviews = Array.from({length: 7}, (_, index) => ({
@@ -10,14 +13,25 @@ export default function Reviews() {
     designation: faker.lorem.sentence(),
   }));
   return (
-    <div className="padding-main bg-accent-500 bg-dot-white/50 flex flex-col py-16">
-      <h3 className="h2-size font-bold text-white">
-        Join hundreds of thousands who’ve created their own melody
-      </h3>
-      <div className="flex">
-        <AnimatedTooltip items={reviews} />
-      </div>
-      <ReviewSlider />
+    <div className="padding-main bg-accent-500 bg-dot-white/50 flex flex-col gap-8 py-16">
+      <motion.div
+        initial={{opacity: 0, x: -100}}
+        whileInView={{opacity: 1, x: 0}}
+        transition={{duration: 1}}
+        viewport={{once: true}}
+      >
+        <h3 className="h2-size font-bold text-white">
+          Join hundreds of thousands who’ve created their own melody
+        </h3>
+        <div className="flex">
+          <AnimatedTooltip items={reviews} />
+        </div>
+      </motion.div>
+      <motion.div className="lg:grid-cols-3 grid w-full grid-cols-1 gap-4">
+        {upworkData.map((data: UpworkDataType) => (
+          <UpworkDialog data={data} key={data.title} />
+        ))}
+      </motion.div>
     </div>
   );
 }
