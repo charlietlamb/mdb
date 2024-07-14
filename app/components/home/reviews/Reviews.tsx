@@ -13,17 +13,18 @@ export default function Reviews() {
     designation: faker.lorem.sentence(),
   }));
   return (
-    <div className="padding-main bg-accent-500 bg-dot-white/50 flex flex-col gap-8 py-16">
+    <div className="padding-main bg-accent-500 bg-dot-white/50 flex flex-col items-center gap-8 py-16">
       <motion.div
         initial={{opacity: 0, x: -100}}
         whileInView={{opacity: 1, x: 0}}
         transition={{duration: 1}}
         viewport={{once: true}}
+        className="flex flex-col gap-2"
       >
-        <h3 className="h2-size font-bold text-white">
+        <h3 className="h2-size font-bold text-center text-white">
           Join hundreds of thousands who’ve created their own melody
         </h3>
-        <div className="flex">
+        <div className="flex items-center justify-center w-full">
           <AnimatedTooltip items={reviews} />
         </div>
       </motion.div>

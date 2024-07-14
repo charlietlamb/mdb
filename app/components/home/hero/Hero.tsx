@@ -1,3 +1,4 @@
+import {WhoType} from '~/data/who/types/WhoType';
 import HeroVideo from './HeroVideo';
 import {motion} from 'framer-motion';
 

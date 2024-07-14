@@ -7,16 +7,26 @@ import Stats from './stats/Stats';
 import Who from './who/Who';
 import {useAppDispatch} from '~/lib/hooks';
 import {useEffect} from 'react';
-import {setProduct} from '~/store/product/productSlice';
+import {setProduct, setWho} from '~/store/product/productSlice';
+import {WhoType, WhoTypeHome} from '~/data/who/types/WhoType';
+import Target from '../target/Target';
 
-export default function Home({song}: {song: Product}) {
+export default function Home({
+  song,
+  who = 'home',
+}: {
+  song: Product;
+  who?: WhoTypeHome;
+}) {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(setProduct(song));
+    dispatch(setWho(who));
   }, []);
   return (
     <div className="bg-dot-black/20 bg-primary-200 flex flex-col gap-8 py-4">
       <Hero />
+      {who !== 'home' && <Target />}
       <Info />
       <Who />
       <Stats />

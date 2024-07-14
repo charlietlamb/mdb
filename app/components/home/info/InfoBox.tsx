@@ -20,14 +20,19 @@ export default function InfoBox({
     <motion.div
       ref={ref}
       className={cn(
-        'bg-primary-100 ring-4 ring-offset-4 ring-offset-primary-200 ring-primary-100 relative py-8 rounded-lg',
+        'bg-primary-100 ring-4 ring-offset-4 ring-offset-primary-200 ring-primary-100 py-8 rounded-lg relative',
         className,
       )}
-      initial={{opacity: 0, x: index % 2 === 0 ? -100 : 100}}
+      initial={{opacity: 0, x: -100}}
       whileInView={{opacity: 1, x: 0}}
       transition={{duration: 1}}
       viewport={{once: true}}
     >
+      {!!index && (
+        <div className="left-4 top-4 text-primary-300 absolute text-4xl font-bold rounded-full">
+          {index}
+        </div>
+      )}
       <GradientBackground />
       <div className="relative flex flex-col items-center justify-center">
         <div className="relative z-10 flex flex-col items-center gap-2">

@@ -12,7 +12,7 @@ import CreateSongButton from './CreateSongButton';
 import {Button} from '~/components/ui/button';
 import {HeaderMenuMobileToggle} from './HeaderMenuMobileToggle';
 import {useMediaQuery} from 'react-responsive';
-import {MicVocal} from 'lucide-react';
+import {Disc} from 'lucide-react';
 
 export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
@@ -56,7 +56,7 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
             <CreateSongButton hidden={isSmallScreen}>
               <Button className="flex items-center gap-2 font-bold uppercase">
                 Start your song
-                <MicVocal />
+                <Disc />
               </Button>
             </CreateSongButton>
             <HeaderMenuMobileToggle />

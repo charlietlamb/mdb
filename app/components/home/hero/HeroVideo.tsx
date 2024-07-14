@@ -1,11 +1,13 @@
 import MuxPlayer from '@mux/mux-player-react';
-import {MicVocal} from 'lucide-react';
+import {Disc} from 'lucide-react';
 import {Button} from '~/components/ui/button';
-import {useAppDispatch} from '~/lib/hooks';
+import {heroVideo} from '~/copy/heroVideo/heroVideo';
+import {useAppDispatch, useAppSelector} from '~/lib/hooks';
 import {setOpen} from '~/store/create/createSlice';
 
 export default function HeroVideo() {
   const dispatch = useAppDispatch();
+  const who = useAppSelector((state) => state.product.who);
   return (
     <div className="relative w-full">
       <MuxPlayer
@@ -40,14 +42,11 @@ export default function HeroVideo() {
         style={{pointerEvents: 'none'}}
       >
         <div className="h-1/3 lg:gap-4 relative z-20 flex flex-col items-center justify-center gap-2">
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center text-center">
             <h1 className="text-primary-900 h1-size font-bold">
-              Create Your Own Melody
+              {heroVideo[who].heading}
             </h1>
-            <p className="text-primary-700 h3-size">
-              Get a one of a kind song for{' '}
-              <span className="text-accent-500">someone you love</span>
-            </p>
+            {heroVideo[who].subHeading}
           </div>
           <Button
             style={{pointerEvents: 'auto'}}
@@ -55,7 +54,7 @@ export default function HeroVideo() {
             className="h3-size flex items-center gap-2"
           >
             Start Your Song
-            <MicVocal />
+            <Disc />
           </Button>
         </div>
         <div className="top-1/2 bg-gradient-to-b from-transparent via-50% via-primary-200/90 to-primary-200 absolute bottom-0 left-0 right-0" />

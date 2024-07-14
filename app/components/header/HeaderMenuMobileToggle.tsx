@@ -1,4 +1,4 @@
-import {Menu, MicVocal} from 'lucide-react';
+import {Menu, Disc} from 'lucide-react';
 import {Sheet, SheetContent, SheetTrigger} from '../ui/sheet';
 import CreateSongButton from './CreateSongButton';
 import {Button} from '../ui/button';
@@ -20,7 +20,7 @@ export function HeaderMenuMobileToggle() {
         <HeaderMenu mobile />
         <CreateSongButton hidden={false}>
           <Button className="flex items-center gap-2 font-bold uppercase">
-            Start your song <MicVocal />
+            Start your song <Disc />
           </Button>
         </CreateSongButton>
       </SheetContent>
