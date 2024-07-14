@@ -26,7 +26,7 @@ export function HeaderMenu({mobile = false}: {mobile?: boolean}) {
           // style={activeLinkStyle}
           to="/occasions"
         >
-          Occasions
+          Who?
         </NavLink>
       </HeaderNavLink>
       <a href={`mailto:${email}`}>

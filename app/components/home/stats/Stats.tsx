@@ -21,9 +21,9 @@ export default function Stats() {
             transition={{duration: 1}}
             viewport={{once: true}}
           >
-            Together, we're changing that. When you request an original song,
-            you're giving a musician the chance to turn their passion into a
-            living.
+            Together, we're changing that.
+            <br /> When you request an original song, you're giving a musician
+            the chance to turn their passion into a living.
           </motion.p>
         </div>
         <StatsNums />

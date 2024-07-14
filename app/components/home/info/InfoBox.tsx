@@ -12,7 +12,7 @@ export default function InfoBox({
   ref: React.RefObject<HTMLDivElement>;
   className: string;
   title: string;
-  text: string;
+  text: React.ReactNode;
   icon: React.ReactNode;
   index: number;
 }) {
@@ -38,9 +38,8 @@ export default function InfoBox({
         <div className="relative z-10 flex flex-col items-center gap-2">
           {icon}
           <h2 className="h2-size font-bold">{title}</h2>
-          <p className="max-w-[70%] h4-size text-center text-accent-500 font-medium">
-            {text}
-          </p>
+
+          {text}
         </div>
       </div>
     </motion.div>

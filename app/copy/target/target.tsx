@@ -5,25 +5,28 @@ export const target: CopyType = {
     heading: 'Create a unique song for someone you love',
     subHeading: 'Join thousands who have already created their own songs',
     text: 'Start creating your song now',
+    button: 'Create your song now!',
   },
   daughter: {
-    heading:
-      'Thousands of proud parents have already purchased unique songs for their daughter',
+    heading: 'Thousands have already created unique songs for their daughters',
     subHeading:
       'Join them and make your daughter feel special with a unique song',
     text: 'Start creating your song now',
+    button: 'Create your song now!',
   },
   mother: {
     heading: 'Thousands have already created unique songs for their mothers',
     subHeading:
       'Join them and make your mother feel special with a unique song',
     text: 'Start creating your song now',
+    button: 'Create your song now!',
   },
   partner: {
     heading: 'Thousands have already created unique songs for their partners',
     subHeading:
       'Join them and make your partner feel special with a unique song',
     text: 'Start creating your song now',
+    button: 'Create your song now!',
   },
   girlfriend: {
     heading:
@@ -31,6 +34,7 @@ export const target: CopyType = {
     subHeading:
       'Join them and make your girlfriend feel special with a unique song',
     text: 'Start creating your song now',
+    button: 'Create your song now!',
   },
   friend: {
     heading:
@@ -38,5 +42,6 @@ export const target: CopyType = {
     subHeading:
       'Join them and make your girlfriend feel special with a unique song',
     text: 'Start creating your song now',
+    button: 'Create your song now!',
   },
 };

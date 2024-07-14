@@ -8,7 +8,7 @@ import Who from './who/Who';
 import {useAppDispatch} from '~/lib/hooks';
 import {useEffect} from 'react';
 import {setProduct, setWho} from '~/store/product/productSlice';
-import {WhoType, WhoTypeHome} from '~/data/who/types/WhoType';
+import {WhoTypeHome} from '~/data/who/types/WhoType';
 import Target from '../target/Target';
 
 export default function Home({

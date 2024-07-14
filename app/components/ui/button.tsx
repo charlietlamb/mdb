@@ -20,6 +20,8 @@ const buttonVariants = cva(
         link: 'text-primary underline-offset-4 hover:underline',
         add_to_cart: 'bg-primary text-primary-foreground hover:bg-primary/90',
         load_previous: '',
+        white:
+          'bg-white text-accent-500 hover:bg-primary-100 hover:bg-gray-100',
       },
       size: {
         default: 'h-10 px-4 py-2',

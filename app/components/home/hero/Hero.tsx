@@ -5,7 +5,7 @@ import {motion} from 'framer-motion';
 export default function Hero() {
   return (
     <motion.div
-      className="padding-main flex flex-col items-center"
+      className="padding-main flex flex-col items-center h-full"
       initial={{opacity: 0}}
       whileInView={{opacity: 1}}
       transition={{duration: 2}}

@@ -3,13 +3,14 @@ import {Disc} from 'lucide-react';
 import {Button} from '~/components/ui/button';
 import {heroVideo} from '~/copy/heroVideo/heroVideo';
 import {useAppDispatch, useAppSelector} from '~/lib/hooks';
+import {cn} from '~/lib/utils';
 import {setOpen} from '~/store/create/createSlice';
 
 export default function HeroVideo() {
   const dispatch = useAppDispatch();
   const who = useAppSelector((state) => state.product.who);
   return (
-    <div className="relative w-full">
+    <div className="relative w-full h-full">
       <MuxPlayer
         streamType="on-demand"
         playbackId="00a8vahkdQR5YUW005Y9d7tJe1S00g9Q7QODUljOF6ohbk"
@@ -18,6 +19,7 @@ export default function HeroVideo() {
         primaryColor="#e4e4e7"
         secondaryColor="#0F172A"
         className="relative z-10 w-full min-w-full overflow-hidden rounded-lg"
+        autoPlay
         style={
           {
             '--seek-backward-button': 'none',
@@ -41,11 +43,14 @@ export default function HeroVideo() {
         className="absolute inset-0 z-10 flex flex-col justify-end"
         style={{pointerEvents: 'none'}}
       >
-        <div className="h-1/3 lg:gap-4 relative z-20 flex flex-col items-center justify-center gap-2">
-          <div className="flex flex-col items-center text-center">
-            <h1 className="text-primary-900 h1-size font-bold">
-              {heroVideo[who].heading}
-            </h1>
+        <div
+          className={cn(
+            'md:h-1/3 h-1/2 lg:gap-4 relative z-20 flex flex-col items-center justify-center md:gap-2',
+            who !== 'home' && 'h-1/3',
+          )}
+        >
+          <div className="md:gap-2 flex flex-col items-center text-center">
+            {heroVideo[who].heading}
             {heroVideo[who].subHeading}
           </div>
           <Button
@@ -57,7 +62,12 @@ export default function HeroVideo() {
             <Disc />
           </Button>
         </div>
-        <div className="top-1/2 bg-gradient-to-b from-transparent via-50% via-primary-200/90 to-primary-200 absolute bottom-0 left-0 right-0" />
+        <div
+          className={cn(
+            'md:top-1/2 top-1/4  bg-gradient-to-b from-transparent via-50% via-primary-200/90 to-primary-200 absolute bottom-0 left-0 right-0',
+            who !== 'home' && 'top-1/3',
+          )}
+        />
       </div>
     </div>
   );

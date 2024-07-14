@@ -20,7 +20,7 @@ export default function CreateSong3() {
     <div className="relative z-10 flex flex-col items-center justify-center flex-grow h-full gap-8 text-center">
       <div className="flex flex-col items-center gap-1">
         <h4 className="text-3xl font-bold leading-none">Provide Key Details</h4>
-        <p className="max-w-[600px] leading-none text-primary-700">
+        <p className="max-w-[600px] leading-none text-primary-700 hidden md:flex">
           Now provide as much context, detail, and emotion as possible for your
           artist to work with. Make sure to include names and special memories.
         </p>
