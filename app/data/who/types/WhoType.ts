@@ -1,8 +1,8 @@
-export type WhoType =
+export type PopupType =
   | 'daughter'
   | 'friend'
   | 'mother'
   | 'partner'
   | 'girlfriend';
 
-export type WhoTypeHome = 'home' | WhoType;
+export type PopupTypeHome = 'home' | PopupType;

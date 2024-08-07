@@ -13,27 +13,55 @@ export function HeaderMenu({mobile = false}: {mobile?: boolean}) {
   return (
     <nav
       className={cn(
-        'md:flex justify-center hidden gap-4',
+        'md:flex w-full justify-center hidden gap-8',
         mobile && 'flex-col gap-1 flex items-center text-lg',
       )}
       role="navigation"
     >
-      <HeaderNavLink href={'occasions'}>
+      <HeaderNavLink href={'all'}>
         <NavLink
-          className="font-semibold"
+          className="whitespace-nowrap w-full font-bold text-center uppercase"
           end
           prefetch="intent"
           // style={activeLinkStyle}
-          to="/occasions"
+          to="/all"
         >
-          Who?
+          Shop All
         </NavLink>
       </HeaderNavLink>
-      <a href={`mailto:${email}`}>
-        <HeaderNavLink href={'contact'}>
-          <p className="font-semibold">Contact</p>
-        </HeaderNavLink>
-      </a>
+      <HeaderNavLink href={'best-sellers'}>
+        <NavLink
+          className="whitespace-nowrap font-bold uppercase"
+          end
+          prefetch="intent"
+          // style={activeLinkStyle}
+          to="/best-sellers"
+        >
+          Best Sellers
+        </NavLink>
+      </HeaderNavLink>
+      <HeaderNavLink href={'story'}>
+        <NavLink
+          className="whitespace-nowrap font-bold uppercase"
+          end
+          prefetch="intent"
+          // style={activeLinkStyle}
+          to="/story"
+        >
+          Our Story
+        </NavLink>
+      </HeaderNavLink>
+      <HeaderNavLink href={'offers'}>
+        <NavLink
+          className="text-accent-600 whitespace-nowrap font-bold uppercase"
+          end
+          prefetch="intent"
+          // style={activeLinkStyle}
+          to="/offers"
+        >
+          Offers
+        </NavLink>
+      </HeaderNavLink>
     </nav>
   );
 }

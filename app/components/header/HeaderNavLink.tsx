@@ -11,6 +11,7 @@ export default function HeaderNavLink({
 
   return (
     <div
+      className="flex items-center justify-center"
       onMouseEnter={() => {
         if (headerKey !== href) setHeaderKey(href);
       }}

@@ -25,6 +25,13 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        effra: ['Effra', 'Verdana', 'Segoe', 'sans-serif'],
+        larken: ['Larken', 'Verdana', 'Segoe', 'sans-serif'],
+      },
+      borderRadius: {
+        base: '0',
+      },
       objectPosition: {
         'top-25': 'center 25%',
         'top-75': 'center 75%',
@@ -36,7 +43,7 @@ module.exports = {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
+          DEFAULT: '#042f4d',
           foreground: 'hsl(var(--primary-foreground))',
           50: 'hsl(var(--primary-50))',
           100: 'hsl(var(--primary-100))',

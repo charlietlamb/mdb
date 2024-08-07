@@ -7,3 +7,8 @@
 .account-logout {
   display: inline-block;
 }
+
+.equal-space-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(0, 1fr));
+}

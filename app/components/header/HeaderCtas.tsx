@@ -8,11 +8,9 @@ export function HeaderCtas({
   cart,
 }: Pick<HeaderProps, 'isLoggedIn' | 'cart'>) {
   return (
-    <nav role="navigation">
-      <div className="md:flex items-center hidden gap-2">
-        <CartToggle cart={cart} />
-        <Search />
-      </div>
+    <nav className="flex items-center gap-2">
+      <CartToggle cart={cart} />
+      <Search />
     </nav>
   );
 }

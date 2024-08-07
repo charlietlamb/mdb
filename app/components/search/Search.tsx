@@ -10,7 +10,7 @@ export default function Search() {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button onClick={() => setOpen(true)} variant="ghost" className="p-2">
-          <SearchIcon />
+          <SearchIcon strokeWidth={1.5} />
         </Button>
       </SheetTrigger>
       <SheetContent>

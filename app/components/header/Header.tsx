@@ -8,7 +8,6 @@ import {motion} from 'framer-motion';
 import {cn} from '~/lib/utils';
 import HeaderLogo from './HeaderLogo';
 import {HeaderMenu} from './HeaderMenu';
-import CreateSongButton from './CreateSongButton';
 import {Button} from '~/components/ui/button';
 import {HeaderMenuMobileToggle} from './HeaderMenuMobileToggle';
 import {useMediaQuery} from 'react-responsive';
@@ -33,33 +32,31 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
     <HeaderContext.Provider value={{headerKey, setHeaderKey}}>
       <motion.header
         className={cn(
-          'bg-primary-200 shadow-black/10 sticky top-0 z-40 flex flex-col shadow-md',
+          'bg-white shadow-black/10 flex flex-col font-main border-b border-primary  sticky top-0 z-40',
           hideShadow && 'shadow-none',
         )}
         onMouseLeave={() => setHeaderKey(null)}
       >
         <div
           className={cn(
-            'flex items-center bg-primary-200 relative z-20 rounded-b-lg p-4 padding-main duration-600 transition-all',
+            'flex items-center bg-white relative z-40 rounded-b-lg p-4 padding-main duration-600 transition-all',
             !!headerKey &&
               !isSmallScreen &&
               'rounded-none transition duration-500',
           )}
         >
-          <HeaderLogo className="flex-grow" />
-          <div className="flex items-center gap-8">
-            <HeaderMenu />
-            {/* <div className="flex items-center gap-2">
+          <div className="grid items-center w-full grid-cols-5 gap-8">
+            <div className="flex items-center gap-2">
+              <HeaderMenuMobileToggle />
               <HeaderAccount isLoggedIn={isLoggedIn} />
+            </div>
+            <div className="flex flex-col items-center col-span-3 gap-2">
+              <HeaderLogo />
+              <HeaderMenu />
+            </div>
+            <div className="ml-auto">
               <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
-            </div> */}
-            <CreateSongButton hidden={isSmallScreen}>
-              <Button className="flex items-center gap-2 font-bold uppercase">
-                Start your song
-                <Disc />
-              </Button>
-            </CreateSongButton>
-            <HeaderMenuMobileToggle />
+            </div>
           </div>
         </div>
         <HeaderPopup />

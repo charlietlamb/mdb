@@ -3,27 +3,20 @@ import {useLoaderData, type MetaFunction} from '@remix-run/react';
 import Home from '~/components/home/Home';
 import {GET_PRODUCT_BY_ID_QUERY} from '~/graphql/products/GetProductById';
 import {Product} from '@shopify/hydrogen/storefront-api-types';
-import {useAppDispatch} from '~/lib/hooks';
-import {setProduct} from '~/store/product/productSlice';
-import {useEffect} from 'react';
 
 export const meta: MetaFunction = () => {
-  return [{title: 'Your Own Melody'}];
+  return [{title: 'MDB Cosmetics'}];
 };
 
 export async function loader({context}: LoaderFunctionArgs) {
   const {storefront} = context;
-  const songProduct = await storefront.query(GET_PRODUCT_BY_ID_QUERY, {
-    variables: {
-      id: 'gid://shopify/Product/8916347060562',
-    },
-  });
 
-  return defer(songProduct.product as Product);
+  // return defer();
+  return null;
 }
 
 export default function Homepage() {
-  const song: Product = useLoaderData<typeof loader>();
+  const Product = useLoaderData<typeof loader>();
 
-  return <Home song={song} />;
+  return <Home />;
 }

@@ -1,7 +1,7 @@
 import HeaderContact from '../HeaderContact';
-import Occasions from '../whos/HeaderWhos';
+import HeaderPopupCollection from '../popups/HeaderPopupCollection';
 
 export const headerPopupMap = new Map([
-  ['occasions', <Occasions />],
+  ['all', <HeaderPopupCollection />],
   ['contact', <HeaderContact />],
 ]);

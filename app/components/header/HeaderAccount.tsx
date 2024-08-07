@@ -15,11 +15,11 @@ export default function HeaderAccount({
           {(isLoggedIn) =>
             isLoggedIn ? (
               <Button variant="link" className="p-0">
-                <CircleUser />
+                <CircleUser strokeWidth={1.5} />
               </Button>
             ) : (
               <Button variant="link" className="p-0">
-                <UserPlus />
+                <UserPlus strokeWidth={1.5} />
               </Button>
             )
           }

@@ -1,6 +1,5 @@
 import {Menu, Disc} from 'lucide-react';
 import {Sheet, SheetContent, SheetTrigger} from '../ui/sheet';
-import CreateSongButton from './CreateSongButton';
 import {Button} from '../ui/button';
 import {HeaderMenu} from './HeaderMenu';
 import {useMediaQuery} from 'react-responsive';
@@ -18,11 +17,6 @@ export function HeaderMenuMobileToggle() {
       <SheetContent side="left" className="flex flex-col items-center gap-4">
         <p className="w-full text-2xl font-bold text-center">Your Own Melody</p>
         <HeaderMenu mobile />
-        <CreateSongButton hidden={false}>
-          <Button className="flex items-center gap-2 font-bold uppercase">
-            Start your song <Disc />
-          </Button>
-        </CreateSongButton>
       </SheetContent>
     </Sheet>
   );

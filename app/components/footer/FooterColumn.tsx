@@ -12,13 +12,13 @@ export default function FooterColumn({
 }) {
   return (
     <div className="md:w-auto md:items-start flex flex-col items-center w-full gap-2">
-      <h5 className="text-xl font-bold uppercase">{title}</h5>
+      <h5 className="text-xl font-medium capitalize">{title}</h5>
       <div className="flex flex-col gap-1">
         {links.map((link) => (
           <Link
             key={link.url}
             to={link.url}
-            className="text-primary-300 md:text-start text-center"
+            className="text-accent-500 md:text-start text-center"
           >
             {link.title}
           </Link>

@@ -7,7 +7,11 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 export default defineConfig({
   ssr: {
     optimizeDeps: {
-      include: ['use-sync-external-store/with-selector.js', 'react-responsive'],
+      include: [
+        'use-sync-external-store/with-selector.js',
+        'react-responsive',
+        'zustand',
+      ],
     },
   },
   plugins: [

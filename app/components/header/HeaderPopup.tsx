@@ -18,7 +18,7 @@ export default function HeaderPopup() {
       {headerKey && (
         <motion.div
           className={cn(
-            'top-full opacity-1 absolute left-0 z-0 w-full bg-primary-200 padding-main p-2 border-t border-accent-500 shadow-md shadow-black/10',
+            'top-full opacity-1 absolute left-0 z-0 w-full bg-white padding-main p-2 border-t border-primary shadow-md shadow-black/10',
           )}
           initial="hidden"
           animate="visible"

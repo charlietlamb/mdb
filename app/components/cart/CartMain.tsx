@@ -9,7 +9,7 @@ export function CartMain({layout, cart}: CartMainProps) {
     cart &&
     Boolean(cart?.discountCodes?.filter((code) => code.applicable)?.length);
   return (
-    <div className="flex flex-col w-full gap-4">
+    <div className="flex flex-col w-full gap-2">
       <div className="flex flex-col">
         <h3 className="text-2xl font-semibold leading-none">Cart</h3>
         {linesCount && (

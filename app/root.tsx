@@ -100,22 +100,20 @@ export default function App() {
   const data = useLoaderData<typeof loader>();
 
   return (
-    <html lang="en">
+    <html lang="en" className="font-effra">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <StoreProvider>
-        <body className="flex flex-col min-h-screen">
-          <Layout {...data}>
-            <Outlet />
-          </Layout>
-          <ScrollRestoration nonce={nonce} />
-          <Scripts nonce={nonce} />
-        </body>
-      </StoreProvider>
+      <body className="flex flex-col min-h-screen">
+        <Layout {...data}>
+          <Outlet />
+        </Layout>
+        <ScrollRestoration nonce={nonce} />
+        <Scripts nonce={nonce} />
+      </body>
     </html>
   );
 }
