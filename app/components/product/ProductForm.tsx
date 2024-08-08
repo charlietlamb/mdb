@@ -41,6 +41,7 @@ export function ProductForm({
         <Button
           variant="add_to_cart"
           disabled={!selectedVariant?.availableForSale}
+          className="font-bold uppercase"
         >
           {selectedVariant?.availableForSale ? 'Add to cart' : 'Sold out'}
         </Button>

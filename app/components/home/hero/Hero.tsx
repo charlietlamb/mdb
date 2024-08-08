@@ -12,9 +12,10 @@ export default function Hero() {
       transition={{duration: 2}}
       viewport={{amount: 'some'}}
     >
-      <Image
+      <img
         className="absolute top-0 left-0 object-cover w-full h-full"
         src="https://images.unsplash.com/photo-1526045478516-99145907023c?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        // src="/images/mdb-full.webp"
         alt="hero image"
         height={1024}
         width={1024}

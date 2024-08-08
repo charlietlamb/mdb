@@ -20,9 +20,9 @@ export function ProductOptions({option}: {option: VariantOption}) {
             >
               <Button
                 className={cn(
-                  'bg-primary-200 hover:bg-primary-100 text-primary-900',
+                  'bg-primary-200 hover:bg-primary-100 text-primary-900 hover:text-primary',
                   isActive &&
-                    'bg-primary-700 hover:bg-primary-600 text-primary-200',
+                    'bg-primary hover:bg-accent-900 text-white hover:text-white',
                 )}
                 disabled={!isAvailable}
               >

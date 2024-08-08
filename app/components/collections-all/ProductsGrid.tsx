@@ -3,7 +3,7 @@ import {ProductItem} from './ProductItem';
 
 export function ProductsGrid({products}: {products: ProductItemFragment[]}) {
   return (
-    <div className="lg:grid-cols-4 grid w-full grid-cols-2 gap-4">
+    <div className="lg:grid-cols-4 grid w-full grid-cols-2 gap-6">
       {products.map((product, index) => {
         return (
           <ProductItem

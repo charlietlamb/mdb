@@ -87,7 +87,7 @@ export default function Product() {
   const {product, variants} = useLoaderData<typeof loader>();
   const {selectedVariant} = product;
   return (
-    <div className="flex">
+    <div className="md:flex-row flex flex-col p-4">
       <ProductImage image={selectedVariant?.image} />
       <ProductMain
         selectedVariant={selectedVariant}

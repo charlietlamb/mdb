@@ -70,7 +70,7 @@ module.exports = {
           foreground: 'hsl(var(--muted-foreground))',
         },
         accent: {
-          DEFAULT: 'hsl(var(--accent))',
+          DEFAULT: 'hsl(var(--accent-700))',
           foreground: 'hsl(var(--accent-foreground))',
           50: 'hsl(var(--accent-50))',
           100: 'hsl(var(--accent-100))',

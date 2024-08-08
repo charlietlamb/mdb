@@ -25,6 +25,7 @@ export default async function handleRequest(
       'https://cloudflare-ipfs.com',
       'https://avatars.githubusercontent.com',
       'https://ipfs.io',
+      'https://cdn.shopify.com',
     ],
     mediaSrc: [
       "'self'",

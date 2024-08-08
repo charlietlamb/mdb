@@ -10,31 +10,31 @@ export default function StatsNums() {
       viewport={{once: true}}
     >
       <div className="flex flex-col items-center">
-        <p className="text-5xl font-bold">
+        <p className="font-larken text-5xl font-bold">
           350<span className="h3-size">k+</span>
         </p>
-        <p className="text-primary-600 h5-size font-bold leading-none text-center uppercase">
+        <p className="text-accent-400 h5-size leading-none text-center">
           New opportunities <br className="md:flex hidden" />
           created for artists
         </p>
       </div>
       <div className="flex flex-col items-center">
-        <p className="text-5xl font-bold">
+        <p className="font-larken text-5xl font-bold">
           <span className="text-4xl">$</span>30
           <span className="text-4xl">M+</span>
         </p>
-        <p className="text-primary-600 h5-size font-bold leading-none text-center uppercase">
-          PAID TO THE ARTIST
-          <br className="md:flex hidden" /> COMMUNITY
+        <p className="text-accent-400 h5-size leading-none text-center">
+          Paid to the artist
+          <br className="md:flex hidden" /> community
         </p>
       </div>
       <div className="flex flex-col items-center">
-        <p className="text-5xl font-bold">
+        <p className="font-larken text-5xl font-bold">
           1<span className="text-4xl">M+</span>
         </p>
-        <p className="text-primary-600 h5-size font-bold leading-none text-center uppercase">
-          NEW FANS <br className="md:flex hidden" />
-          CREATED
+        <p className="text-accent-400 h5-size leading-none text-center">
+          New Fans <br className="md:flex hidden" />
+          created
         </p>
       </div>
     </motion.div>

@@ -281,7 +281,9 @@ html {
 .h2-size {
   @apply md:text-3xl lg:text-4xl text-2xl;
 }
-
+.h25-size {
+  @apply md:text-xl lg:text-2xl text-xl;
+}
 .h3-size {
   @apply md:text-lg lg:text-xl;
 }
@@ -296,9 +298,9 @@ html {
 
 @media (min-width: 768px) {
   .hero-height {
-    height: calc(100vh - 124px);
+    height: calc(100vh - 113px);
   }
 }
 .hero-height {
-  height: calc(100vh - 109px);
+  height: calc(100vh - 93px);
 }

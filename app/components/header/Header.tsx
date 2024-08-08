@@ -12,6 +12,7 @@ import {Button} from '~/components/ui/button';
 import {HeaderMenuMobileToggle} from './HeaderMenuMobileToggle';
 import {useMediaQuery} from 'react-responsive';
 import {Disc} from 'lucide-react';
+import Search from '../search/Search';
 
 export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
@@ -39,7 +40,7 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
       >
         <div
           className={cn(
-            'flex items-center bg-white relative z-40 rounded-b-lg p-4 padding-main duration-600 transition-all',
+            'flex items-center bg-white relative z-40 rounded-b-lg p-4 padding-main duration-600 py-2 transition-all',
             !!headerKey &&
               !isSmallScreen &&
               'rounded-none transition duration-500',
@@ -47,8 +48,8 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
         >
           <div className="grid items-center w-full grid-cols-5 gap-8">
             <div className="flex items-center gap-2">
-              <HeaderMenuMobileToggle />
-              <HeaderAccount isLoggedIn={isLoggedIn} />
+              <HeaderMenuMobileToggle isLoggedIn={isLoggedIn} />
+              <Search />
             </div>
             <div className="flex flex-col items-center col-span-3 gap-2">
               <HeaderLogo />

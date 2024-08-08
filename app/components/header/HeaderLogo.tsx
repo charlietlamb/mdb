@@ -11,14 +11,14 @@ export default function HeaderLogo({className}: {className?: string}) {
       end
       className={className}
     >
-      {/* <img
+      <img
         width={1024}
         height={1024}
-        className="w-36"
+        className="h-7 w-20"
         src="/images/logo.png"
-        alt="Your Own Melody Logo"
-      /> */}
-      <strong>MDB</strong>
+        alt="MDB Logo"
+      />
+      {/* <strong>MDB</strong> */}
     </NavLink>
   );
 }

@@ -26,11 +26,13 @@ export function ProductItem({
           data={product.featuredImage}
           loading={loading}
           sizes="(min-width: 45em) 400px, 100vw"
-          className="rounded-md"
+          className="border-primary ring-primary ring-2 ring-offset-white ring-offset-2 border"
         />
       )}
       <div className="flex flex-col">
-        <h4 className="font-medium leading-none">{product.title}</h4>
+        <h4 className="text-primary font-larken font-medium leading-none">
+          {product.title}
+        </h4>
         <Money data={product.priceRange.minVariantPrice} className="text-sm" />
       </div>
     </Link>

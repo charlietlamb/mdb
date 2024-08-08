@@ -1,23 +1,41 @@
 import {Link} from '@remix-run/react';
 import {Image} from '@shopify/hydrogen';
-import {FeaturedCollectionFragment} from 'storefrontapi.generated';
+import {Product} from '@shopify/hydrogen/storefront-api-types';
 
 export function FeaturedCollection({
-  collection,
+  products,
 }: {
-  collection: FeaturedCollectionFragment;
+  products: Product[] | undefined;
 }) {
-  if (!collection) return null;
-  const image = collection?.image;
+  if (!products) return null;
   return (
-    <Link
-      className="flex flex-col items-center gap-2"
-      to={`/collections/${collection.handle}`}
-    >
-      {image && <Image data={image} sizes="100vw" className="w-full" />}
-      <h1 className="w-full text-4xl font-bold text-center">
-        {collection.title}
-      </h1>
-    </Link>
+    <div className="padding-main flex flex-col items-center gap-8 p-8">
+      <div className="gap flex flex-col items-center">
+        <h3 className="text h1-size text-primary font-larken font-bold uppercase">
+          Featured Collection
+        </h3>
+        <p className="text-accent h3-size">We think you'll love these</p>
+      </div>
+      <div className="md:flex-row md:items-start flex flex-col items-center w-full gap-6">
+        {products.map((product) => (
+          <Link
+            key={product.id}
+            className="flex flex-col items-center h-full min-h-full md:w-full w-[70%] gap-6"
+            to={`/products/${product.handle}`}
+          >
+            {product.images.nodes[0] && (
+              <div className="aspect-square ring-primary ring-2 ring-offset-white ring-offset-2 relative flex items-center justify-center w-full overflow-hidden">
+                <Image data={product.images.nodes[0]} sizes="100vw" />
+              </div>
+            )}
+            <div className="ring-primary ring-2 ring-offset-white ring-offset-2 border-primary flex flex-grow w-full h-full p-4 bg-white border">
+              <h3 className="font-larken h25-size font-primary w-full font-bold text-center">
+                {product.title}
+              </h3>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
   );
 }

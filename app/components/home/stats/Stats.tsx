@@ -2,11 +2,11 @@ import StatsNums from './StatsNums';
 import {motion} from 'framer-motion';
 export default function Stats() {
   return (
-    <div className="padding-main flex flex-col items-center gap-8 py-16">
+    <div className="padding-main bg-primary flex flex-col items-center gap-8 py-16 text-white">
       <div className="flex flex-col gap-8 px-8">
         <div className="flex flex-col gap-2">
           <motion.h3
-            className="h2-size font-bold text-center"
+            className="h2-size font-larken font-bold text-center"
             initial={{opacity: 0, x: 100}}
             whileInView={{opacity: 1, x: 0}}
             transition={{duration: 1}}
@@ -15,7 +15,7 @@ export default function Stats() {
             Only .002% of musicians currently make a full-time living in music
           </motion.h3>
           <motion.p
-            className="text-primary-700 h3-size leading-none text-center"
+            className="text-accent-300 h3-size leading-none text-center"
             initial={{opacity: 0, x: -100}}
             whileInView={{opacity: 1, x: 0}}
             transition={{duration: 1}}

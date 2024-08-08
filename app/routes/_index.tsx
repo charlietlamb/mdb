@@ -1,7 +1,8 @@
 import {defer, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {useLoaderData, type MetaFunction} from '@remix-run/react';
 import Home from '~/components/home/Home';
-import {GET_PRODUCT_BY_ID_QUERY} from '~/graphql/products/GetProductById';
+import {FEATURED_PRODUCTS_QUERY} from '~/components/home/FeaturedProductQuery';
+import {ProductFragment} from 'storefrontapi.generated';
 import {Product} from '@shopify/hydrogen/storefront-api-types';
 
 export const meta: MetaFunction = () => {
@@ -11,12 +12,18 @@ export const meta: MetaFunction = () => {
 export async function loader({context}: LoaderFunctionArgs) {
   const {storefront} = context;
 
-  // return defer();
-  return null;
+  const {collection} = await storefront.query(FEATURED_PRODUCTS_QUERY, {
+    variables: {
+      collectionId: 'gid://shopify/Collection/626912854361',
+      country: context.storefront.i18n.country,
+      language: context.storefront.i18n.language,
+    },
+  });
+  return defer({collection});
 }
 
 export default function Homepage() {
-  const Product = useLoaderData<typeof loader>();
-
-  return <Home />;
+  const data = useLoaderData<typeof loader>();
+  const products = data.collection?.products.nodes as Product[] | undefined;
+  return <Home featuredProducts={products} />;
 }
