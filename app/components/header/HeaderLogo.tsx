@@ -16,9 +16,9 @@ export default function HeaderLogo({className}: {className?: string}) {
         height={1024}
         className="h-7 w-20"
         src="/images/logo.png"
-        alt="MDB Logo"
+        alt="MBD Logo"
       />
-      {/* <strong>MDB</strong> */}
+      {/* <strong>MBD</strong> */}
     </NavLink>
   );
 }

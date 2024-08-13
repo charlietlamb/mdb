@@ -6,7 +6,7 @@ import {ProductFragment} from 'storefrontapi.generated';
 import {Product} from '@shopify/hydrogen/storefront-api-types';
 
 export const meta: MetaFunction = () => {
-  return [{title: 'MDB Cosmetics'}];
+  return [{title: 'MBD Cosmetics'}];
 };
 
 export async function loader({context}: LoaderFunctionArgs) {

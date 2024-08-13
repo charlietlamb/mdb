@@ -21,7 +21,7 @@ export function HeaderMenuMobileToggle({
         <Menu className="min-w-6 min-h-6 cursor-pointer" strokeWidth={1.5} />
       </SheetTrigger>
       <SheetContent side="left" className="flex flex-col items-center">
-        <p className="w-full text-2xl font-bold text-center">MDB Cosmetics</p>
+        <p className="w-full text-2xl font-bold text-center">MBD Cosmetics</p>
         <Separator className="bg-accent-950 h-[2px] px-4 my-2" />
         <HeaderMenu mobile />
       </SheetContent>

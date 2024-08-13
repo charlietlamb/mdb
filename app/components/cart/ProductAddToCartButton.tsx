@@ -10,7 +10,6 @@ export default function ProductAddToCartButton({
   onClick: () => void;
   children: React.ReactNode;
 }) {
-  console.log(product);
   const variantId = product.variants.edges[0].node.id;
 
   if (!variantId) {

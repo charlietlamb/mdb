@@ -8,6 +8,9 @@ import {VARIANTS_QUERY} from '~/components/product/graphql/varientsQuery';
 import {PRODUCT_QUERY} from '~/components/product/graphql/productQuery';
 import {ProductImage} from '~/components/product/ProductImage';
 import {ProductMain} from '~/components/product/ProductMain';
+import {AliReview, ReviewFetch} from '~/components/product/reviews/Review';
+import ReviewList from '~/components/product/reviews/ReviewList';
+import ReviewsAdd from '~/components/product/reviews/ReviewsAdd';
 
 export const meta: MetaFunction<typeof loader> = ({data}) => {
   return [{title: `Hydrogen | ${data?.product.title ?? ''}`}];
@@ -57,7 +60,29 @@ export async function loader({params, request, context}: LoaderFunctionArgs) {
     variables: {handle},
   });
 
-  return defer({product, variants});
+  let res = (await fetch(
+    'https://widget-hub-api.alireviews.io/api/public/reviews',
+    {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer 43aad528abab14f50c7fe48a85e0757d`,
+        'Content-Type': 'application/json',
+      },
+    },
+  )
+    .then((res) => res.json())
+    .catch((err) => {
+      console.log(err?.message);
+      return {data: {reviews: [], cursor: ''}, message: '', status: 0};
+    })) as Promise<ReviewFetch>;
+  return defer({
+    product,
+    variants,
+    res:
+      'data' in res
+        ? (res.data as {reviews: AliReview[]; cursor: string})
+        : null,
+  });
 }
 
 function redirectToFirstVariant({
@@ -84,16 +109,23 @@ function redirectToFirstVariant({
 }
 
 export default function Product() {
-  const {product, variants} = useLoaderData<typeof loader>();
+  const {product, variants, res} = useLoaderData<typeof loader>();
   const {selectedVariant} = product;
+  let reviews: AliReview[] = [];
+  if (res && 'reviews' in res) reviews = res.reviews as AliReview[];
+
   return (
-    <div className="md:flex-row flex flex-col p-4">
-      <ProductImage image={selectedVariant?.image} />
-      <ProductMain
-        selectedVariant={selectedVariant}
-        product={product}
-        variants={variants}
-      />
+    <div className="flex flex-col">
+      <div className="md:flex-row flex flex-col p-4">
+        <ProductImage image={selectedVariant?.image} />
+        <ProductMain
+          selectedVariant={selectedVariant}
+          product={product}
+          variants={variants}
+        />
+      </div>
+      <ReviewList allReviews={reviews} />
+      <ReviewsAdd />
     </div>
   );
 }

@@ -14,7 +14,6 @@ export function ProductMain({
   variants: Promise<ProductVariantsQuery>;
 }) {
   const {title, descriptionHtml} = product;
-  console.log(product);
   return (
     <div className="md:py-0 md:px-4 flex flex-col w-full gap-4 px-0 py-4">
       <div className="lg:flex-row lg:justify-between lg:items-center flex flex-col">

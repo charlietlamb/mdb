@@ -1293,12 +1293,12 @@ body {
   min-height: 80px;
 }
 
-.min-h-screen {
-  min-height: 100vh;
-}
-
 .min-h-full {
   min-height: 100%;
+}
+
+.min-h-screen {
+  min-height: 100vh;
 }
 
 .w-0 {
@@ -1656,12 +1656,12 @@ body {
   gap: 1rem;
 }
 
-.gap-8 {
-  gap: 2rem;
-}
-
 .gap-6 {
   gap: 1.5rem;
+}
+
+.gap-8 {
+  gap: 2rem;
 }
 
 .gap-y-4 {
@@ -1960,10 +1960,6 @@ body {
   background-color: hsl(var(--primary-300));
 }
 
-.bg-primary-700 {
-  background-color: hsl(var(--primary-700));
-}
-
 .bg-secondary {
   background-color: hsl(var(--secondary));
 }
@@ -1975,10 +1971,6 @@ body {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-white\/20 {
-  background-color: rgb(255 255 255 / 0.2);
 }
 
 .bg-gradient-to-r {
@@ -2065,6 +2057,11 @@ body {
   padding: 1px;
 }
 
+.px-0 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 .px-16 {
   padding-left: 4rem;
   padding-right: 4rem;
@@ -2148,11 +2145,6 @@ body {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
-}
-
-.px-0 {
-  padding-left: 0px;
-  padding-right: 0px;
 }
 
 .pb-3 {
@@ -2395,10 +2387,6 @@ body {
 
 .text-primary-100 {
   color: hsl(var(--primary-100));
-}
-
-.text-primary-200 {
-  color: hsl(var(--primary-200));
 }
 
 .text-primary-50 {
@@ -2946,6 +2934,10 @@ html {
   background-color: hsl(var(--accent-700));
 }
 
+.hover\:bg-accent-900:hover {
+  background-color: hsl(var(--accent-900));
+}
+
 .hover\:bg-accent-950:hover {
   background-color: hsl(var(--accent-950));
 }
@@ -2984,10 +2976,6 @@ html {
   background-color: hsl(var(--primary-300));
 }
 
-.hover\:bg-primary-600:hover {
-  background-color: hsl(var(--primary-600));
-}
-
 .hover\:bg-primary\/80:hover {
   background-color: rgb(4 47 77 / 0.8);
 }
@@ -3008,14 +2996,6 @@ html {
   background-color: transparent;
 }
 
-.hover\:bg-accent-700:hover {
-  background-color: hsl(var(--accent-700));
-}
-
-.hover\:bg-accent-900:hover {
-  background-color: hsl(var(--accent-900));
-}
-
 .hover\:text-accent-foreground:hover {
   color: hsl(var(--accent-foreground));
 }
@@ -3026,6 +3006,11 @@ html {
 
 .hover\:text-muted-foreground:hover {
   color: hsl(var(--muted-foreground));
+}
+
+.hover\:text-primary:hover {
+  --tw-text-opacity: 1;
+  color: rgb(4 47 77 / var(--tw-text-opacity));
 }
 
 .hover\:text-primary-foreground:hover {
@@ -3040,11 +3025,6 @@ html {
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.hover\:text-primary:hover {
-  --tw-text-opacity: 1;
-  color: rgb(4 47 77 / var(--tw-text-opacity));
 }
 
 .hover\:underline:hover {
@@ -3819,11 +3799,6 @@ html {
     border-radius: var(--radius);
   }
 
-  .sm\:py-4 {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
-
   .sm\:text-left {
     text-align: left;
   }
@@ -3895,19 +3870,14 @@ html {
     gap: 0px;
   }
 
-  .md\:py-4 {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+  .md\:px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .md\:py-0 {
     padding-top: 0px;
     padding-bottom: 0px;
-  }
-
-  .md\:px-4 {
-    padding-left: 1rem;
-    padding-right: 1rem;
   }
 
   .md\:text-start {

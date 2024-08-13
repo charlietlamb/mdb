@@ -8,7 +8,7 @@ export default function FooterLogo() {
         height={1024}
         className="w-36"
         src="/images/logoFull.jpg"
-        alt="MDB Logo"
+        alt="MBD Logo"
       />
     </Link>
   );

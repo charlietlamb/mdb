@@ -26,6 +26,7 @@ export default async function handleRequest(
       'https://avatars.githubusercontent.com',
       'https://ipfs.io',
       'https://cdn.shopify.com',
+      'https://ae01.alicdn.com',
     ],
     mediaSrc: [
       "'self'",
