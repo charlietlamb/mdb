@@ -8,28 +8,38 @@ import HeaderNavLink from './HeaderNavLink';
 import {useHeaderContext} from './context/headerContext';
 import {cn} from '~/lib/utils';
 import {email} from '~/data/email/email';
+import {ChevronRight} from 'lucide-react';
 
 export function HeaderMenu({mobile = false}: {mobile?: boolean}) {
+  const {setHeaderKey} = useHeaderContext();
   return (
     <nav
       className={cn(
         'md:flex w-full justify-center hidden gap-8',
-        mobile && 'flex-col gap-1 flex items-center text-lg',
+        mobile && 'flex-col gap-1 flex w-full items-center text-lg',
       )}
       role="navigation"
     >
-      <HeaderNavLink href={'all'}>
+      <HeaderNavLink
+        href={'all'}
+        className={cn('', mobile && 'w-full')}
+        onClick={() => setHeaderKey(null)}
+      >
         <NavLink
-          className="whitespace-nowrap w-full font-bold text-center uppercase"
+          className={cn(
+            'whitespace-nowrap w-full font-bold text-center uppercase flex justify-between items-center',
+            mobile && 'text-start font-normal',
+          )}
           end
           prefetch="intent"
           // style={activeLinkStyle}
-          to="/all"
+          to="/collections/all"
         >
           Shop All
+          {mobile && <ChevronRight className="w-4 h-4 ml-2" />}
         </NavLink>
       </HeaderNavLink>
-      <HeaderNavLink href={'best-sellers'}>
+      <HeaderNavLink href={'best-sellers'} onClick={() => setHeaderKey(null)}>
         <NavLink
           className="whitespace-nowrap font-bold uppercase"
           end
@@ -40,7 +50,7 @@ export function HeaderMenu({mobile = false}: {mobile?: boolean}) {
           Best Sellers
         </NavLink>
       </HeaderNavLink>
-      <HeaderNavLink href={'story'}>
+      <HeaderNavLink href={'story'} onClick={() => setHeaderKey(null)}>
         <NavLink
           className="whitespace-nowrap font-bold uppercase"
           end
@@ -51,7 +61,7 @@ export function HeaderMenu({mobile = false}: {mobile?: boolean}) {
           Our Story
         </NavLink>
       </HeaderNavLink>
-      <HeaderNavLink href={'offers'}>
+      <HeaderNavLink href={'offers'} onClick={() => setHeaderKey(null)}>
         <NavLink
           className="text-accent-600 whitespace-nowrap font-bold uppercase"
           end

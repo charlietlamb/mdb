@@ -1,9 +1,11 @@
+import {useNavigate} from '@remix-run/react';
 import {Image} from '@shopify/hydrogen';
 import {motion} from 'framer-motion';
 import {Button} from '~/components/ui/button';
 import {Separator} from '~/components/ui/separator';
 
 export default function Hero() {
+  const navigate = useNavigate();
   return (
     <motion.div
       className="padding-main hero-height relative flex flex-col items-center w-full"
@@ -28,7 +30,7 @@ export default function Hero() {
             Keep your skin glowing all season with light yet mighty microbiome
             skincare essentials.
           </h2>
-          <Button>Shop Now</Button>
+          <Button onClick={() => navigate('/collections/all')}>Shop Now</Button>
         </div>
       </div>
     </motion.div>

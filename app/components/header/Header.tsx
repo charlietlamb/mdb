@@ -13,12 +13,14 @@ import {HeaderMenuMobileToggle} from './HeaderMenuMobileToggle';
 import {useMediaQuery} from 'react-responsive';
 import {Disc} from 'lucide-react';
 import Search from '../search/Search';
+import {usePopupStore} from '~/lib/state/popup/store';
 
 export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
   const isSmallScreen = useMediaQuery({query: '(max-width: 768px)'});
   const [headerKey, setHeaderKey] = useState<string | null>(null);
   const [hideShadow, setHideShadow] = useState(false);
+  const {mobileOpen} = usePopupStore();
   useEffect(() => {
     if (headerKey === null) {
       setTimeout(() => {
@@ -36,7 +38,7 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
           'bg-white shadow-black/10 flex flex-col font-main border-b border-primary  sticky top-0 z-40',
           hideShadow && 'shadow-none',
         )}
-        onMouseLeave={() => setHeaderKey(null)}
+        onMouseLeave={() => !mobileOpen && setHeaderKey(null)}
       >
         <div
           className={cn(

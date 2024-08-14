@@ -15,7 +15,7 @@ export function ProductMain({
 }) {
   const {title, descriptionHtml} = product;
   return (
-    <div className="md:py-0 md:px-4 flex flex-col w-full gap-4 px-0 py-4">
+    <div className="md:py-0 md:px-4 lg:col-span-2 flex flex-col w-full gap-4 px-0 py-4">
       <div className="lg:flex-row lg:justify-between lg:items-center flex flex-col">
         <h1 className="font-larken text-primary text-4xl font-bold">{title}</h1>
         <ProductPrice selectedVariant={selectedVariant} />

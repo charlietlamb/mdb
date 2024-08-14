@@ -16,7 +16,9 @@ import appStyles from './styles/app.css?url';
 import tailwindStyles from './styles/tailwind.css?url';
 import tailwindMinStyles from './styles/tailwind.min.css?url';
 import {Layout} from '~/components/Layout';
-import StoreProvider from './components/providers/StoreProvider';
+import {FEATURED_PRODUCTS_QUERY} from './components/home/FeaturedProductQuery';
+import {Product} from '@shopify/hydrogen/storefront-api-types';
+import PopupProvider from './components/providers/PopupProvider';
 
 /**
  * This is important to avoid re-fetching root queries on sub-navigations
@@ -79,6 +81,14 @@ export async function loader({context}: LoaderFunctionArgs) {
     },
   });
 
+  const {collection} = await storefront.query(FEATURED_PRODUCTS_QUERY, {
+    variables: {
+      collectionId: 'gid://shopify/Collection/627247219033',
+      country: context.storefront.i18n.country,
+      language: context.storefront.i18n.language,
+    },
+  });
+
   return defer(
     {
       cart: cartPromise,
@@ -86,6 +96,7 @@ export async function loader({context}: LoaderFunctionArgs) {
       header: await headerPromise,
       isLoggedIn: isLoggedInPromise,
       publicStoreDomain,
+      headerData: collection,
     },
     {
       headers: {
@@ -97,8 +108,10 @@ export async function loader({context}: LoaderFunctionArgs) {
 
 export default function App() {
   const nonce = useNonce();
-  const data = useLoaderData<typeof loader>();
-
+  const {headerData, ...data} = useLoaderData<typeof loader>();
+  const products = headerData ? (headerData.products.nodes as Product[]) : [];
+  // const {setProducts} = usePopupStore();
+  // setProducts(products);
   return (
     <html lang="en" className="font-effra">
       <head>
@@ -108,11 +121,13 @@ export default function App() {
         <Links />
       </head>
       <body className="flex flex-col min-h-screen">
-        <Layout {...data}>
-          <Outlet />
-        </Layout>
-        <ScrollRestoration nonce={nonce} />
-        <Scripts nonce={nonce} />
+        <PopupProvider products={products}>
+          <Layout {...data}>
+            <Outlet />
+          </Layout>
+          <ScrollRestoration nonce={nonce} />
+          <Scripts nonce={nonce} />
+        </PopupProvider>
       </body>
     </html>
   );

@@ -1,14 +1,12 @@
 import {cn} from '~/lib/utils';
 import {useHeaderContext} from './context/headerContext';
 
-export default function HeaderNavLink({
+export default function HeaderNavLinkMobile({
   href,
-  onClick,
   className,
   children,
 }: {
   href: string;
-  onClick?: () => void;
   className?: string;
   children: React.ReactNode;
 }) {
@@ -16,11 +14,13 @@ export default function HeaderNavLink({
 
   return (
     <div
-      className={cn('flex items-center justify-center', className)}
-      onMouseEnter={() => {
+      className={cn(
+        'whitespace-nowrap cursor-pointer text-start font-normal uppercase flex justify-between items-center w-full',
+        className,
+      )}
+      onClick={() => {
         if (headerKey !== href) setHeaderKey(href);
       }}
-      onClick={onClick}
     >
       {children}
     </div>

@@ -115,8 +115,8 @@ export default function Product() {
   if (res && 'reviews' in res) reviews = res.reviews as AliReview[];
 
   return (
-    <div className="flex flex-col">
-      <div className="md:flex-row flex flex-col p-4">
+    <div className="padding-main flex flex-col">
+      <div className="md:grid-cols-2 lg:grid-cols-3 grid p-4">
         <ProductImage image={selectedVariant?.image} />
         <ProductMain
           selectedVariant={selectedVariant}
@@ -125,7 +125,6 @@ export default function Product() {
         />
       </div>
       <ReviewList allReviews={reviews} />
-      <ReviewsAdd />
     </div>
   );
 }

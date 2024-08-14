@@ -9,8 +9,8 @@ import Stats from './stats/Stats';
 import {useEffect} from 'react';
 import {PopupTypeHome} from '~/data/who/types/WhoType';
 import Target from '../target/Target';
-import {useFunnelStore} from '~/lib/state/store';
 import {FeaturedCollection} from './FeaturedCollection';
+import {useFunnelStore} from '~/lib/state/funnel/store';
 
 export default function Home({
   featuredProducts,

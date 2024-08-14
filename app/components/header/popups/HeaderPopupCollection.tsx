@@ -1,16 +1,17 @@
-import {whoData} from '~/data/who/whoData';
-import Who from './HeaderPopupItem';
 import {Button} from '~/components/ui/button';
 import {HandHeart} from 'lucide-react';
 import {useNavigate} from '@remix-run/react';
+import {usePopupStore} from '~/lib/state/popup/store';
+import HeaderPopupItem from './HeaderPopupItem';
 
 export default function HeaderPopupCollection() {
   const navigate = useNavigate();
+  const {products} = usePopupStore();
   return (
     <div className="flex flex-col items-center w-full gap-2 py-4">
-      <div className="md:grid-cols-5 grid w-full gap-4">
-        {whoData.map((data) => (
-          <Who data={data} key={data.title} />
+      <div className="flex w-full gap-4">
+        {products.slice(0, 5).map((product) => (
+          <HeaderPopupItem product={product} key={product.id} />
         ))}
       </div>
       {/* TODO: add route to products */}

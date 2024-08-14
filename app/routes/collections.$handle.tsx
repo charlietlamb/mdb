@@ -6,6 +6,7 @@ import {ProductsGrid} from '~/components/collections-all/ProductsGrid';
 import {COLLECTION_QUERY} from '~/components/collection/graphql/collectionQuery';
 import AutoLoad from '~/components/general/AutoLoad';
 import LoadPrevious from '~/components/general/LoadPrevious';
+import {Separator} from '~/components/ui/separator';
 
 export const meta: MetaFunction<typeof loader> = ({data}) => {
   return [{title: `Hydrogen | ${data?.collection.title ?? ''} Collection`}];
@@ -36,11 +37,14 @@ export async function loader({request, params, context}: LoaderFunctionArgs) {
 
 export default function Collection() {
   const {collection} = useLoaderData<typeof loader>();
-
+  console.log(collection);
   return (
     <div className="flex flex-col items-center w-full gap-4 p-4">
       <div className="flex flex-col items-center gap-1">
-        <h1 className="text-4xl font-bold">{collection.title}</h1>
+        <h1 className="font-larken text-4xl font-bold uppercase">
+          {collection.title}
+        </h1>
+        <Separator className="bg-accent-950 w-20 h-[2px] px-4 " />
         <p className="">{collection.description}</p>
       </div>
       <Pagination connection={collection.products}>

@@ -2,7 +2,7 @@ import {target} from '~/copy/target/target';
 import TargetVideo from './TargetVideo';
 import {Button} from '../ui/button';
 import {Disc} from 'lucide-react';
-import {useFunnelStore} from '~/lib/state/store';
+import {useFunnelStore} from '~/lib/state/funnel/store';
 
 export default function Target() {
   const {funnel} = useFunnelStore();

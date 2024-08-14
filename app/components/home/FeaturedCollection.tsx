@@ -12,7 +12,7 @@ export function FeaturedCollection({
     <div className="padding-main flex flex-col items-center gap-8 p-8">
       <div className="gap flex flex-col items-center">
         <h3 className="text h1-size text-primary font-larken font-bold uppercase">
-          Featured Collection
+          Our best sellers
         </h3>
         <p className="text-accent h3-size">We think you'll love these</p>
       </div>
@@ -28,10 +28,13 @@ export function FeaturedCollection({
                 <Image data={product.images.nodes[0]} sizes="100vw" />
               </div>
             )}
-            <div className="ring-primary ring-2 ring-offset-white ring-offset-2 border-primary flex flex-grow w-full h-full p-4 bg-white border">
+            <div className="ring-primary ring-2 ring-offset-white ring-offset-2 border-primary flex flex-col items-center flex-grow w-full h-full p-4 bg-white border">
               <h3 className="font-larken h25-size font-primary w-full font-bold text-center">
                 {product.title}
               </h3>
+              <p className="font-larken font-light">
+                £{product.priceRange.minVariantPrice.amount}
+              </p>
             </div>
           </Link>
         ))}
