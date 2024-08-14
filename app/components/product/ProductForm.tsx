@@ -3,6 +3,8 @@ import {ProductFragment, ProductVariantFragment} from 'storefrontapi.generated';
 import {ProductOptions} from './ProductOptions';
 import {AddToCartButton} from './AddToCartButton';
 import {Button} from '~/components/ui/button';
+import {useOpenStore} from '~/lib/state/open/store';
+import {useState} from 'react';
 
 export function ProductForm({
   product,
@@ -13,6 +15,8 @@ export function ProductForm({
   selectedVariant: ProductFragment['selectedVariant'];
   variants: Array<ProductVariantFragment>;
 }) {
+  const {setCart} = useOpenStore();
+  const [quantity, setQuantity] = useState(1);
   return (
     <div className="flex flex-col gap-4">
       <VariantSelector
@@ -22,30 +26,48 @@ export function ProductForm({
       >
         {({option}) => <ProductOptions key={option.name} option={option} />}
       </VariantSelector>
-      <AddToCartButton
-        disabled={!selectedVariant || !selectedVariant.availableForSale}
-        onClick={() => {
-          window.location.href = window.location.href + '#cart-aside';
-        }}
-        lines={
-          selectedVariant
-            ? [
-                {
-                  merchandiseId: selectedVariant.id,
-                  quantity: 1,
-                },
-              ]
-            : []
-        }
-      >
-        <Button
-          variant="add_to_cart"
-          disabled={!selectedVariant?.availableForSale}
-          className="font-bold uppercase"
+      <div className="flex items-center gap-2">
+        <div className="bg-accent-100 flex items-center gap-1">
+          <Button
+            disabled={quantity <= 1}
+            onClick={() => setQuantity(quantity - 1)}
+            variant="ghost"
+          >
+            -
+          </Button>
+          <p className="text-primary text-lg font-bold">{quantity}</p>
+          <Button
+            disabled={quantity >= 10}
+            onClick={() => setQuantity(quantity + 1)}
+            variant="ghost"
+          >
+            +
+          </Button>
+        </div>
+        <AddToCartButton
+          disabled={!selectedVariant || !selectedVariant.availableForSale}
+          onClick={() => {
+            setCart(true);
+          }}
+          lines={
+            selectedVariant
+              ? [
+                  {
+                    merchandiseId: selectedVariant.id,
+                    quantity,
+                  },
+                ]
+              : []
+          }
         >
-          {selectedVariant?.availableForSale ? 'Add to cart' : 'Sold out'}
-        </Button>
-      </AddToCartButton>
+          <Button
+            disabled={!selectedVariant?.availableForSale}
+            className="w-full font-bold uppercase"
+          >
+            {selectedVariant?.availableForSale ? 'Add to cart' : 'Sold out'}
+          </Button>
+        </AddToCartButton>
+      </div>
     </div>
   );
 }

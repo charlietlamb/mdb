@@ -11,6 +11,8 @@ import {ProductMain} from '~/components/product/ProductMain';
 import {AliReview, ReviewFetch} from '~/components/product/reviews/Review';
 import ReviewList from '~/components/product/reviews/ReviewList';
 import ReviewsAdd from '~/components/product/reviews/ReviewsAdd';
+import {useState} from 'react';
+import StickyAddToCart from '~/components/product/StickyAddToCart';
 
 export const meta: MetaFunction<typeof loader> = ({data}) => {
   return [{title: `Hydrogen | ${data?.product.title ?? ''}`}];
@@ -113,18 +115,26 @@ export default function Product() {
   const {selectedVariant} = product;
   let reviews: AliReview[] = [];
   if (res && 'reviews' in res) reviews = res.reviews as AliReview[];
-
+  const [showSticky, setShowSticky] = useState(false);
   return (
-    <div className="padding-main flex flex-col">
-      <div className="md:grid-cols-2 lg:grid-cols-3 grid p-4">
-        <ProductImage image={selectedVariant?.image} />
-        <ProductMain
-          selectedVariant={selectedVariant}
-          product={product}
-          variants={variants}
-        />
+    <div className="relative">
+      <div className="padding-main flex flex-col">
+        <div className="md:grid-cols-2 lg:grid-cols-3 grid p-4">
+          <ProductImage image={selectedVariant?.image} />
+          <ProductMain
+            selectedVariant={selectedVariant}
+            product={product}
+            variants={variants}
+            setShowSticky={setShowSticky}
+          />
+        </div>
+        <ReviewList allReviews={reviews} />
       </div>
-      <ReviewList allReviews={reviews} />
+      <StickyAddToCart
+        product={product}
+        selectedVariant={selectedVariant}
+        show={showSticky}
+      />
     </div>
   );
 }

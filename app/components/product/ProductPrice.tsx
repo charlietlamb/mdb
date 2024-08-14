@@ -7,7 +7,7 @@ export function ProductPrice({
   selectedVariant: ProductFragment['selectedVariant'];
 }) {
   return (
-    <div className="product-price">
+    <div className="text-primary text-lg font-bold">
       {selectedVariant?.compareAtPrice ? (
         <>
           <p>Sale</p>
@@ -19,7 +19,11 @@ export function ProductPrice({
           </div>
         </>
       ) : (
-        selectedVariant?.price && <Money data={selectedVariant?.price} />
+        selectedVariant?.price && (
+          <div className="flex items-center gap-1">
+            From <Money data={selectedVariant?.price} />
+          </div>
+        )
       )}
     </div>
   );

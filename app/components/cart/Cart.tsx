@@ -3,9 +3,10 @@ import {Sheet, SheetContent, SheetTrigger} from '~/components/ui/sheet';
 import {Button} from '~/components/ui/button';
 import {ShoppingCart} from 'lucide-react';
 import CartContent from './CartContent';
+import {useOpenStore} from '~/lib/state/open/store';
 
 export default function Cart({count}: {count: number}) {
-  const [open, setOpen] = useState(false);
+  const {cart: open, setCart: setOpen} = useOpenStore();
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>

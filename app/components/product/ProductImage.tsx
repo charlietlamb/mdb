@@ -16,7 +16,6 @@ export function ProductImage({
       data={image}
       key={image.id}
       sizes="(min-width: 45em) 50vw, 100vw"
-      className="border-primary ring-primary ring-2 ring-offset-white ring-offset-2 border"
     />
   );
 }

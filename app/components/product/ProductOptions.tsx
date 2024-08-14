@@ -6,7 +6,7 @@ import {cn} from '~/lib/utils';
 export function ProductOptions({option}: {option: VariantOption}) {
   return (
     <div className="product-options" key={option.name}>
-      <h5 className=" text-lg font-medium">{option.name}</h5>
+      <h5 className=" font-larken text-xl font-bold">{option.name}</h5>
       <div className="flex items-center gap-2">
         {option.values.map(({value, isAvailable, isActive, to}) => {
           return (
