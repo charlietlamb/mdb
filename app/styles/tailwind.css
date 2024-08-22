@@ -250,8 +250,32 @@ html {
   }
 }
 
+:root {
+  --padding-main: 2rem; /* Default padding for small screens */
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --padding-main: 5rem; /* Padding for lg screens */
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --padding-main: 10rem; /* Padding for xl screens */
+  }
+}
+
+@media (min-width: 1536px) {
+  :root {
+    --padding-main: 15rem; /* Padding for 2xl screens */
+  }
+}
+
 .padding-main {
-  @apply lg:px-20 xl:px-40 2xl:px-60 px-8;
+  padding-left: var(--padding-main);
+  padding-right: var(--padding-main);
+  transition: padding 0.3s ease; /* Add transition for smooth effect */
 }
 
 @screen md {

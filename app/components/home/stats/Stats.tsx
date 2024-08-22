@@ -1,5 +1,5 @@
-import StatsNums from './StatsNums';
 import {motion} from 'framer-motion';
+import BaResults from './BaResults';
 export default function Stats() {
   return (
     <div className="padding-main bg-primary flex flex-col items-center gap-8 py-16 text-white">
@@ -12,7 +12,7 @@ export default function Stats() {
             transition={{duration: 1}}
             viewport={{once: true}}
           >
-            Only .002% of musicians currently make a full-time living in music
+            Our results speak for themselves.
           </motion.h3>
           <motion.p
             className="text-accent-300 h3-size leading-none text-center"
@@ -21,12 +21,10 @@ export default function Stats() {
             transition={{duration: 1}}
             viewport={{once: true}}
           >
-            Together, we're changing that.
-            <br /> When you request an original song, you're giving a musician
-            the chance to turn their passion into a living.
+            Our products make a difference, transforming your skincare journey.
           </motion.p>
         </div>
-        <StatsNums />
+        <BaResults />
       </div>
     </div>
   );

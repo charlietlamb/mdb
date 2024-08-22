@@ -1,1 +1,1 @@
-export const email = 'support@yourownmelody.com';
+export const email = 'support@mbdcosmetics.com';

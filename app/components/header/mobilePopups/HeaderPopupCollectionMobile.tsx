@@ -11,6 +11,7 @@ export default function HeaderPopupCollectionMobile() {
   const navigate = useNavigate();
   const {products} = usePopupStore();
   const {setHeaderKey} = useHeaderContext();
+  const {setMobileOpen} = usePopupStore();
   return (
     <AnimatePresence>
       <motion.div
@@ -33,7 +34,10 @@ export default function HeaderPopupCollectionMobile() {
         </div>
         {/* TODO: add route to products */}
         <Button
-          onClick={() => navigate('/collections/all')}
+          onClick={() => {
+            setMobileOpen(false);
+            navigate('/collections/all');
+          }}
           className="flex items-center w-full gap-2"
         >
           All Our Products! <HandHeart />

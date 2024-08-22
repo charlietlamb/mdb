@@ -115,11 +115,15 @@ export default function Product() {
   const {selectedVariant} = product;
   let reviews: AliReview[] = [];
   if (res && 'reviews' in res) reviews = res.reviews as AliReview[];
+  const productId = product.id.split('/').pop();
+  const filteredReviews = reviews.filter(
+    (r) => r.product_id === parseInt(productId || ''),
+  );
   const [showSticky, setShowSticky] = useState(false);
   return (
     <div className="relative">
       <div className="padding-main flex flex-col">
-        <div className="md:grid-cols-2 lg:grid-cols-3 grid p-4">
+        <div className="md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 p-4">
           <ProductImage image={selectedVariant?.image} />
           <ProductMain
             selectedVariant={selectedVariant}
@@ -128,7 +132,7 @@ export default function Product() {
             setShowSticky={setShowSticky}
           />
         </div>
-        <ReviewList allReviews={reviews} />
+        <ReviewList allReviews={filteredReviews} />
       </div>
       <StickyAddToCart
         product={product}

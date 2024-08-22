@@ -7,7 +7,7 @@ export function ProductOptions({option}: {option: VariantOption}) {
   return (
     <div className="product-options" key={option.name}>
       <h5 className=" font-larken text-xl font-bold">{option.name}</h5>
-      <div className="flex items-center gap-2">
+      <div className="md:flex-row md:items-center md:overflow-x-auto flex flex-col gap-2">
         {option.values.map(({value, isAvailable, isActive, to}) => {
           return (
             <Link

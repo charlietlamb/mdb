@@ -16,11 +16,11 @@ export function FeaturedCollection({
         </h3>
         <p className="text-accent h3-size">We think you'll love these</p>
       </div>
-      <div className="md:flex-row md:items-start flex flex-col items-center w-full gap-6">
+      <div className="md:flex-row flex flex-col items-stretch w-full gap-6">
         {products.map((product) => (
           <Link
             key={product.id}
-            className="flex flex-col items-center h-full min-h-full md:w-full w-[70%] gap-6"
+            className="flex flex-col mx-auto flex-grow items-stretch h-full min-h-full md:w-full w-[70%] gap-6"
             to={`/products/${product.handle}`}
           >
             {product.images.nodes[0] && (
@@ -33,7 +33,7 @@ export function FeaturedCollection({
                 {product.title}
               </h3>
               <p className="font-larken font-light">
-                £{product.priceRange.minVariantPrice.amount}
+                £{product.priceRange.minVariantPrice.amount}0
               </p>
             </div>
           </Link>

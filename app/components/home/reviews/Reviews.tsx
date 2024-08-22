@@ -1,17 +1,15 @@
-import {AnimatedTooltip} from '~/components/aceternity/AnimatedTooltip';
-import {faker} from '@faker-js/faker';
 import {motion} from 'framer-motion';
-import UpworkDialog from '~/components/upwork/UpworkDialog';
-import {upworkData} from '~/components/upwork/data/upworkData';
-import {UpworkDataType} from '~/components/upwork/data/UpworkDataType';
+import {reviews} from '~/data/reviews/reviews';
+import Review from './Review';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '~/components/ui/carousel';
 
 export default function Reviews() {
-  const reviews = Array.from({length: 7}, (_, index) => ({
-    id: index,
-    image: faker.image.avatarLegacy(),
-    name: faker.person.fullName(),
-    designation: faker.lorem.sentence(),
-  }));
   return (
     <div className="padding-main text-primary flex flex-col items-center gap-8 py-16">
       <motion.div
@@ -19,14 +17,25 @@ export default function Reviews() {
         whileInView={{opacity: 1, x: 0}}
         transition={{duration: 1}}
         viewport={{once: true}}
-        className="flex flex-col gap-2"
+        className="flex flex-col gap-8 max-w-[100vw] padding-main"
       >
         <h3 className="h2-size font-larken font-bold text-center">
-          Join hundreds of thousands who’ve created their own melody
+          What our customers say about MBD Organics
         </h3>
-        <div className="flex items-center justify-center w-full">
-          <AnimatedTooltip items={reviews} />
-        </div>
+        <Carousel className="max-w-[100vw] sm:max-w-[vw] md:max-w-[82vw] lg:max-w-[90vw]">
+          <CarouselContent className="px-4">
+            {reviews.map((review) => (
+              <CarouselItem
+                key={review.id}
+                className="basis-[100%] md:basis-1/2 lg:basis-1/3"
+              >
+                <Review review={review} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="md:flex text-primary-700 hover:bg-transparent hidden" />
+          <CarouselNext className="md:flex text-primary-700 hover:bg-transparent hidden" />
+        </Carousel>
       </motion.div>
     </div>
   );

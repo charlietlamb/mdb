@@ -120,7 +120,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="flex flex-col min-h-screen">
+      <body className="flex flex-col min-h-screen overflow-x-hidden">
         <PopupProvider products={products}>
           <Layout {...data}>
             <Outlet />

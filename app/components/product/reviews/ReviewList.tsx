@@ -56,7 +56,7 @@ export default function ReviewList({allReviews}: {allReviews: AliReview[]}) {
   }
   return (
     <div>
-      <div className="p-8 text-center">No reviews available</div>
+      <div className="p-8 text-center">No reviews yet!</div>
     </div>
   );
 }

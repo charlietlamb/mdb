@@ -15,7 +15,8 @@ export function ProductImage({
       aspectRatio="1/1"
       data={image}
       key={image.id}
-      sizes="(min-width: 45em) 50vw, 100vw"
+      // sizes="(min-width: 45em) 50vw, 100vw"
+      style={{maxWidth: '100%', height: 'auto'}} // Ensure it stays within the container
     />
   );
 }

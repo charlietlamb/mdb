@@ -8,7 +8,7 @@ export default function Hero() {
   const navigate = useNavigate();
   return (
     <motion.div
-      className="padding-main hero-height relative flex flex-col items-center w-full"
+      className="padding-main hero-height border-primary relative flex flex-col items-center w-full border-b"
       initial={{opacity: 0}}
       whileInView={{opacity: 1}}
       transition={{duration: 2}}
@@ -23,12 +23,16 @@ export default function Hero() {
         width={1024}
       />
       <div className="md:w-[50%] w-[70%] relative z-10 flex flex-col items-center p-8 px-16 my-auto bg-white text-accent-900 text-center ring-2 ring-offset-2 ring-offset-accent-950 ring-white">
-        <h1 className="font-larken text-4xl font-bold">Summer Radiance</h1>
+        <h1 className="font-larken text-4xl font-bold">
+          Mum-Approved,
+          <br /> Nature-Perfected.
+        </h1>
         <Separator className="bg-accent-950 h-px my-4" />
         <div className="flex flex-col w-full gap-4">
           <h2>
-            Keep your skin glowing all season with light yet mighty microbiome
-            skincare essentials.
+            When Nothing Else Works, Trust MBD Organics.
+            <br /> Skincare born from a mother’s love, designed to heal and
+            nurture.
           </h2>
           <Button onClick={() => navigate('/collections/all')}>Shop Now</Button>
         </div>

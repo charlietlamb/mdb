@@ -8,7 +8,8 @@ export default function ReviewSlider() {
     designation: faker.lorem.sentence(),
   }));
   return (
-    <div>
+    <Carousel
+>
       {/* {reviews.map((review) => (
         <Review key={review.id} review={review} />
       ))} */}

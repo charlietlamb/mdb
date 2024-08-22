@@ -28,7 +28,7 @@ export default function Collection() {
   const {products} = useLoaderData<typeof loader>();
 
   return (
-    <div className="flex flex-col items-center w-full gap-4 p-4">
+    <div className="padding-main flex flex-col items-center w-full gap-4 p-4">
       <div className="flex flex-col items-center gap-1">
         <h1 className="font-larken text-4xl font-bold uppercase">Products</h1>
         <Separator className="bg-accent-950 w-20 h-[2px] px-4" />

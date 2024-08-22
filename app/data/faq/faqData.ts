@@ -1,30 +1,30 @@
 export const faqData = [
   {
-    question: 'How long does my original song take?',
-    answer: 'It takes 3-5 business days to complete your original song.',
-  },
-  {
-    question: 'What is the process for creating my original song?',
+    question: 'Are MBD Organics products suitable for all skin types?',
     answer:
-      'After you provide your song details, our team of professional songwriters will create your original song. You will receive a preview of your song within 3-5 business days.',
+      'Yes, all of our products are made from natural, organic ingredients that are gentle and effective for all skin types. Whether you have dry, sensitive, oily, or combination skin, our products are designed to nourish and protect your skin naturally.',
   },
   {
-    question: 'Can I request changes to my original song?',
+    question:
+      'Do your products contain any synthetic ingredients or chemicals?',
     answer:
-      'Yes, you can request changes to your original song. We offer one round of revisions to ensure your song is perfect.',
+      'No, all MBD Organics products are free from synthetic ingredients, chemicals, and artificial fragrances. We exclusively use natural, organic ingredients to ensure our products are safe, gentle, and beneficial for your skin.',
   },
   {
-    question: 'How do I receive my original song?',
+    question:
+      'Is MBD Organics committed to sustainable and eco-friendly practices?',
     answer:
-      'You will receive your original song as a high-quality audio file that you can download and share.',
+      'Absolutely! We are dedicated to sustainability and eco-friendliness in everything we do, from sourcing our natural, organic ingredients to using environmentally responsible packaging. Our goal is to provide high-quality skincare while caring for the planet.',
   },
   {
-    question: 'Can I use my original song for commercial purposes?',
+    question: 'Can I use MBD Organics products if I have sensitive skin?',
     answer:
-      'Yes, you can use your original song for commercial purposes. You own the rights to the song once it is completed.',
+      'Yes, our products are formulated with natural, organic ingredients that are kind to sensitive skin. They are designed to be gentle and non-irritating, making them suitable for all skin types, including sensitive skin. We recommend doing a patch test if you have specific concerns.',
   },
   {
-    question: 'What if I have more questions?',
-    answer: 'If you have more questions, feel free to contact us at',
+    question:
+      'How should I store MBD Organics products to maintain their quality?',
+    answer:
+      'To keep our products at their best, store them in a cool, dry place away from direct sunlight. Natural, organic ingredients are sensitive to heat and light, so proper storage will help maintain their effectiveness and longevity.',
   },
 ];

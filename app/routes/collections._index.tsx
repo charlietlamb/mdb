@@ -26,7 +26,7 @@ export default function Collections() {
       <h1 className="text-4xl font-bold">Collections</h1>
       <Pagination connection={collections}>
         {({nodes, isLoading, PreviousLink, NextLink}) => (
-          <div className="flex flex-col gap-4">
+          <div className="padding-main flex flex-col gap-4">
             <LoadPrevious PreviousLink={PreviousLink} />
             <CollectionsGrid collections={nodes} />
             <AutoLoad isLoading={isLoading} NextLink={NextLink} />
