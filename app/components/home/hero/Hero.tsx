@@ -22,7 +22,7 @@ export default function Hero() {
         height={1024}
         width={1024}
       />
-      <div className="md:w-[50%] w-[70%] relative z-10 flex flex-col items-center p-8 px-16 my-auto bg-white text-accent-900 text-center ring-2 ring-offset-2 ring-offset-accent-950 ring-white">
+      <div className="md:w-[50%] w-[70%] relative z-10 flex flex-col items-center p-8 md:px-16 my-auto bg-white text-accent-900 text-center ring-2 ring-offset-2 ring-offset-accent-950 ring-white">
         <h1 className="font-larken text-4xl font-bold">
           Mum-Approved,
           <br /> Nature-Perfected.

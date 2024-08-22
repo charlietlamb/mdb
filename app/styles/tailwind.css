@@ -328,3 +328,12 @@ html {
 .hero-height {
   height: calc(100vh - 93px);
 }
+
+.sticky-add-to-cart form,
+.sticky-add-to-cart button {
+  @apply w-full;
+}
+
+.product-description h4 {
+  @apply text-primary py-2 text-xl font-semibold;
+}

@@ -3,6 +3,7 @@ import {ProductPrice} from './ProductPrice';
 import {Dispatch, SetStateAction, Suspense, useEffect, useRef} from 'react';
 import {ProductForm} from './ProductForm';
 import {Await} from '@remix-run/react';
+import ProductFeatures from './ProductFeatures';
 
 export function ProductMain({
   selectedVariant,
@@ -43,7 +44,7 @@ export function ProductMain({
   return (
     <div className="md:py-0 md:px-4 lg:col-span-2 flex flex-col w-full gap-4 px-0 py-4">
       <div className="flex flex-col">
-        <h1 className="text-primary text-4xl font-medium uppercase">{title}</h1>
+        <h1 className="text-primary h2-size font-medium uppercase">{title}</h1>
         <ProductPrice selectedVariant={selectedVariant} />
       </div>
       <div ref={elementRef}>
@@ -73,9 +74,13 @@ export function ProductMain({
       <div className="flex flex-col gap-2">
         <p className="text-xl font-semibold">Description</p>
         <div
-          className="text-primary leading-6"
+          className="text-primary product-description leading-6"
           dangerouslySetInnerHTML={{__html: descriptionHtml}}
         />
+      </div>
+      <div className="flex flex-col gap-2">
+        <p className="text-xl font-semibold">Features</p>
+        <ProductFeatures />
       </div>
     </div>
   );

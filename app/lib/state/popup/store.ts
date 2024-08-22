@@ -6,6 +6,8 @@ export type State = {
   setMobileOpen: (mobileOpen: boolean) => void;
   products: Product[];
   setProducts: (products: Product[]) => void;
+  bestSellers: Product[];
+  setBestSellers: (bestSellers: Product[]) => void;
 };
 
 export const usePopupStore = create<State>((set) => ({
@@ -13,4 +15,6 @@ export const usePopupStore = create<State>((set) => ({
   setMobileOpen: (mobileOpen) => set({mobileOpen}),
   products: [],
   setProducts: (products) => set({products}),
+  bestSellers: [],
+  setBestSellers: (bestSellers) => set({bestSellers}),
 }));

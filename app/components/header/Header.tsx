@@ -1,6 +1,5 @@
 import {HeaderCtas} from './HeaderCtas';
 import {HeaderProps} from './types/HeaderProps';
-import HeaderAccount from './HeaderAccount';
 import {useEffect, useState} from 'react';
 import {HeaderContext} from './context/headerContext';
 import HeaderPopup from './HeaderPopup';
@@ -8,10 +7,8 @@ import {motion} from 'framer-motion';
 import {cn} from '~/lib/utils';
 import HeaderLogo from './HeaderLogo';
 import {HeaderMenu} from './HeaderMenu';
-import {Button} from '~/components/ui/button';
 import {HeaderMenuMobileToggle} from './HeaderMenuMobileToggle';
 import {useMediaQuery} from 'react-responsive';
-import {Disc} from 'lucide-react';
 import Search from '../search/Search';
 import {usePopupStore} from '~/lib/state/popup/store';
 

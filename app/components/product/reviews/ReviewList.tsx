@@ -21,8 +21,8 @@ export default function ReviewList({allReviews}: {allReviews: AliReview[]}) {
     // reviewsToRender = reviewsToRender.slice(0, reviewsToShow);
 
     return (
-      <div className="md:flex md:gap-16 md:space-y-0 p-4 space-y-8">
-        <div className="md:my-8 shrink-0 my-6 space-y-6">
+      <div className=" md:gap-16 md:space-y-0 p-4 space-y-8">
+        <div className="md:my-4 w-full my-6 space-y-6">
           <div className="shrink-0 flex gap-4">
             <div className="text-6xl font-bold leading-none">
               {avgRating.toFixed(1)}

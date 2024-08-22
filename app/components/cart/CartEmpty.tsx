@@ -18,7 +18,7 @@ export function CartEmpty({
         Looks like you haven&rsquo;t added anything yet, let&rsquo;s get you
         started!
       </p>
-      <Button onClick={() => navigate('/collections')}>
+      <Button onClick={() => navigate('/collections/all')}>
         Get Started <ArrowRight />
       </Button>
     </div>

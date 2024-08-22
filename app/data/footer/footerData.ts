@@ -1,52 +1,23 @@
 export const footerData = [
   {
+    title: 'Our Products',
+    links: [
+      {
+        title: 'All',
+        url: '/collections/all',
+      },
+      {
+        title: 'Best Sellers',
+        url: '/collections/featuredcollection',
+      },
+    ],
+  },
+  {
     title: 'Company',
     links: [
       {
-        title: 'About',
-        url: '/about',
-      },
-      {
-        title: 'Careers',
-        url: '/careers',
-      },
-      {
-        title: 'Press',
-        url: '/press',
-      },
-    ],
-  },
-  {
-    title: 'Products',
-    links: [
-      {
-        title: 'Pricing',
-        url: '/pricing',
-      },
-      {
-        title: 'Features',
-        url: '/features',
-      },
-      {
-        title: 'Enterprise',
-        url: '/enterprise',
-      },
-    ],
-  },
-  {
-    title: 'Resources',
-    links: [
-      {
-        title: 'Blog',
-        url: '/blog',
-      },
-      {
-        title: 'Developers',
-        url: '/developers',
-      },
-      {
-        title: 'Support',
-        url: '/support',
+        title: 'Contact',
+        url: '/contact',
       },
     ],
   },
@@ -54,12 +25,8 @@ export const footerData = [
     title: 'Legal',
     links: [
       {
-        title: 'Privacy Policy',
-        url: '/privacy',
-      },
-      {
-        title: 'Terms of Service',
-        url: '/terms',
+        title: 'Policies',
+        url: '/policies',
       },
     ],
   },

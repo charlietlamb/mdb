@@ -5,9 +5,9 @@ import {usePopupStore} from '~/lib/state/popup/store';
 import HeaderPopupItem from './HeaderPopupItem';
 import {useHeaderContext} from '../context/headerContext';
 import {AnimatePresence, motion} from 'framer-motion';
-export default function HeaderPopupCollection() {
+export default function HeaderPopupBestSellers() {
   const navigate = useNavigate();
-  const {products} = usePopupStore();
+  const {bestSellers: products} = usePopupStore();
   const {setHeaderKey} = useHeaderContext();
   return (
     <AnimatePresence>
@@ -26,7 +26,7 @@ export default function HeaderPopupCollection() {
         <Button
           onClick={() => {
             setHeaderKey(null);
-            navigate('/collections/all');
+            navigate('/collections/featuredcollection');
           }}
           className="flex items-center gap-2"
         >

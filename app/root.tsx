@@ -12,6 +12,7 @@ import {
   type ShouldRevalidateFunction,
 } from '@remix-run/react';
 import favicon from './assets/favicon.svg';
+import mbdLogo from '/images/logoFull.jpg';
 import appStyles from './styles/app.css?url';
 import tailwindStyles from './styles/tailwind.css?url';
 import tailwindMinStyles from './styles/tailwind.min.css?url';
@@ -54,7 +55,7 @@ export function links() {
       rel: 'preconnect',
       href: 'https://shop.app',
     },
-    {rel: 'icon', type: 'image/svg+xml', href: favicon},
+    {rel: 'icon', type: 'image/svg+xml', href: mbdLogo},
   ];
 }
 
@@ -83,11 +84,22 @@ export async function loader({context}: LoaderFunctionArgs) {
 
   const {collection} = await storefront.query(FEATURED_PRODUCTS_QUERY, {
     variables: {
-      collectionId: 'gid://shopify/Collection/627247219033',
+      collectionId: 'gid://shopify/Collection/627716981081',
       country: context.storefront.i18n.country,
       language: context.storefront.i18n.language,
     },
   });
+
+  const {collection: bestSellers} = await storefront.query(
+    FEATURED_PRODUCTS_QUERY,
+    {
+      variables: {
+        collectionId: 'gid://shopify/Collection/626912854361',
+        country: context.storefront.i18n.country,
+        language: context.storefront.i18n.language,
+      },
+    },
+  );
 
   return defer(
     {
@@ -96,7 +108,7 @@ export async function loader({context}: LoaderFunctionArgs) {
       header: await headerPromise,
       isLoggedIn: isLoggedInPromise,
       publicStoreDomain,
-      headerData: collection,
+      headerData: {collection, bestSellers},
     },
     {
       headers: {
@@ -109,9 +121,11 @@ export async function loader({context}: LoaderFunctionArgs) {
 export default function App() {
   const nonce = useNonce();
   const {headerData, ...data} = useLoaderData<typeof loader>();
-  const products = headerData ? (headerData.products.nodes as Product[]) : [];
-  // const {setProducts} = usePopupStore();
-  // setProducts(products);
+  const products = headerData
+    ? (headerData.collection?.products.nodes as Product[])
+    : [];
+  const bestSellers = headerData.bestSellers?.products.nodes as Product[];
+
   return (
     <html lang="en" className="font-effra">
       <head>
@@ -121,7 +135,7 @@ export default function App() {
         <Links />
       </head>
       <body className="flex flex-col min-h-screen overflow-x-hidden">
-        <PopupProvider products={products}>
+        <PopupProvider products={products} bestSellers={bestSellers}>
           <Layout {...data}>
             <Outlet />
           </Layout>

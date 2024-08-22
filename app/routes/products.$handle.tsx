@@ -1,18 +1,23 @@
 import {defer, redirect, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {useLoaderData, type MetaFunction} from '@remix-run/react';
 import type {ProductFragment} from 'storefrontapi.generated';
-import {getSelectedProductOptions, CartForm} from '@shopify/hydrogen';
-import type {SelectedOption} from '@shopify/hydrogen/storefront-api-types';
+import {getSelectedProductOptions} from '@shopify/hydrogen';
+import type {
+  Product,
+  SelectedOption,
+} from '@shopify/hydrogen/storefront-api-types';
 import {getVariantUrl} from '~/lib/variants';
 import {VARIANTS_QUERY} from '~/components/product/graphql/varientsQuery';
 import {PRODUCT_QUERY} from '~/components/product/graphql/productQuery';
 import {ProductImage} from '~/components/product/ProductImage';
 import {ProductMain} from '~/components/product/ProductMain';
 import {AliReview, ReviewFetch} from '~/components/product/reviews/Review';
-import ReviewList from '~/components/product/reviews/ReviewList';
-import ReviewsAdd from '~/components/product/reviews/ReviewsAdd';
 import {useState} from 'react';
 import StickyAddToCart from '~/components/product/StickyAddToCart';
+import {reviews} from '~/data/reviews/reviews';
+import ReviewList from '~/components/product/reviews/ReviewList';
+import {FEATURED_PRODUCTS_QUERY} from '~/components/home/FeaturedProductQuery';
+import RecommendedProducts from '~/components/product/RecommendedProducts';
 
 export const meta: MetaFunction<typeof loader> = ({data}) => {
   return [{title: `Hydrogen | ${data?.product.title ?? ''}`}];
@@ -77,6 +82,16 @@ export async function loader({params, request, context}: LoaderFunctionArgs) {
       console.log(err?.message);
       return {data: {reviews: [], cursor: ''}, message: '', status: 0};
     })) as Promise<ReviewFetch>;
+
+  //Other products to buy
+  const {collection} = await storefront.query(FEATURED_PRODUCTS_QUERY, {
+    variables: {
+      collectionId: 'gid://shopify/Collection/626912854361',
+      country: context.storefront.i18n.country,
+      language: context.storefront.i18n.language,
+    },
+  });
+
   return defer({
     product,
     variants,
@@ -84,6 +99,7 @@ export async function loader({params, request, context}: LoaderFunctionArgs) {
       'data' in res
         ? (res.data as {reviews: AliReview[]; cursor: string})
         : null,
+    collection,
   });
 }
 
@@ -111,7 +127,7 @@ function redirectToFirstVariant({
 }
 
 export default function Product() {
-  const {product, variants, res} = useLoaderData<typeof loader>();
+  const {product, variants, res, collection} = useLoaderData<typeof loader>();
   const {selectedVariant} = product;
   let reviews: AliReview[] = [];
   if (res && 'reviews' in res) reviews = res.reviews as AliReview[];
@@ -119,6 +135,9 @@ export default function Product() {
   const filteredReviews = reviews.filter(
     (r) => r.product_id === parseInt(productId || ''),
   );
+
+  const products = collection?.products.nodes as Product[] | undefined;
+  const filteredProducts = products?.filter((p) => p.id !== product.id);
   const [showSticky, setShowSticky] = useState(false);
   return (
     <div className="relative">
@@ -133,6 +152,7 @@ export default function Product() {
           />
         </div>
         <ReviewList allReviews={filteredReviews} />
+        <RecommendedProducts products={filteredProducts} />
       </div>
       <StickyAddToCart
         product={product}

@@ -21,16 +21,16 @@ export default function StickyAddToCart({
       {show && (
         <motion.div
           className={cn(
-            'fixed bottom-0 gap-4 padding-main justify-between flex items-center md:justify-center w-full py-2 bg-white border-t border-primary ',
+            'fixed bottom-0 md:gap-4 items-center gap-2 sticky-add-to-cart padding-main justify-between md:flex-row flex-col flex md:justify-center w-full py-2 bg-white border-t border-primary ',
           )}
           initial={{opacity: 0, y: 100}}
           animate={{opacity: 1, y: 0}}
           exit={{opacity: 0, y: 100}}
           transition={{duration: 0.6}}
         >
-          <p className="md:flex-row md:gap-2 flex flex-col">
+          <p className="md:justify-start flex flex-row items-center justify-center w-full gap-2">
             <span className="font-bold truncate">{product.title}</span>{' '}
-            <p className="truncate">{selectedVariant?.title}</p>
+            <p className="truncate">£{selectedVariant?.price.amount}0</p>
           </p>
 
           <AddToCartButton
@@ -52,7 +52,7 @@ export default function StickyAddToCart({
             <Button
               variant="add_to_cart"
               disabled={!selectedVariant?.availableForSale}
-              className="font-bold uppercase"
+              className="md:w-auto w-full font-bold uppercase"
             >
               {selectedVariant?.availableForSale ? 'Add to cart' : 'Sold out'}
             </Button>
