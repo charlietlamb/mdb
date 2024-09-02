@@ -37,7 +37,6 @@ export async function loader({request, params, context}: LoaderFunctionArgs) {
 
 export default function Collection() {
   const {collection} = useLoaderData<typeof loader>();
-  console.log(collection);
   return (
     <div className="padding-main flex flex-col items-center w-full gap-4 p-4">
       <div className="flex flex-col items-center gap-1">

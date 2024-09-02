@@ -1,4 +1,4 @@
-import {ChevronLeft} from 'lucide-react';
+import {ChevronLeft, Gift, Heart, HeartHandshake, Leaf} from 'lucide-react';
 import {useHeaderContext} from '../context/headerContext';
 import {AnimatePresence, motion} from 'framer-motion';
 
@@ -22,12 +22,23 @@ export default function HeaderPopupOffer() {
         {/* <img src="/images/logoFull.jpg" alt="our-story" className="size-40" /> */}
         <div className="flex flex-col h-full gap-1">
           <h4 className="font-larken h2-size font-semibold">Our Offer</h4>
-          <p>
+          <div className="flex items-center gap-2">
+            <Gift className="flex-shrink-0" />
             Enjoy a free gift with your order!
-            <br /> We make our products to put a smile on your face.
-            <br /> We are a family owned business that has produces natural,
-            organic, and non-GMO cosmetics.
-          </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <Heart className="flex-shrink-0" />
+            We make our products to put a smile on your face.
+          </div>
+          <div className="flex items-center gap-2">
+            <Leaf className="flex-shrink-0" />
+            We are a family owned business that has produces natural, organic,
+            and non-GMO cosmetics.
+          </div>
+          <div className="flex items-center gap-2">
+            <HeartHandshake className="flex-shrink-0" />
+            No code is required to claim your offer.
+          </div>
         </div>
       </motion.div>
     </AnimatePresence>

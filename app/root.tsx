@@ -1,4 +1,4 @@
-import {useNonce} from '@shopify/hydrogen';
+import {getPaginationVariables, useNonce} from '@shopify/hydrogen';
 import {defer, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {
   Links,
@@ -18,8 +18,9 @@ import tailwindStyles from './styles/tailwind.css?url';
 import tailwindMinStyles from './styles/tailwind.min.css?url';
 import {Layout} from '~/components/Layout';
 import {FEATURED_PRODUCTS_QUERY} from './components/home/FeaturedProductQuery';
-import {Product} from '@shopify/hydrogen/storefront-api-types';
+import {Collection, Product} from '@shopify/hydrogen/storefront-api-types';
 import PopupProvider from './components/providers/PopupProvider';
+import {COLLECTION_QUERY} from './components/collection/graphql/collectionQuery';
 
 /**
  * This is important to avoid re-fetching root queries on sub-navigations
@@ -59,7 +60,7 @@ export function links() {
   ];
 }
 
-export async function loader({context}: LoaderFunctionArgs) {
+export async function loader({context, request}: LoaderFunctionArgs) {
   const {storefront, customerAccount, cart} = context;
   const publicStoreDomain = context.env.PUBLIC_STORE_DOMAIN;
 
@@ -100,6 +101,41 @@ export async function loader({context}: LoaderFunctionArgs) {
       },
     },
   );
+  // const collectionIds = [
+  //   'gid://shopify/Collection/627717538137',
+  //   'gid://shopify/Collection/627717472601',
+  //   'gid://shopify/Collection/627717439833',
+  //   'gid://shopify/Collection/627717407065',
+  //   'gid://shopify/Collection/627717341529',
+  //   'gid://shopify/Collection/627717275993',
+  //   'gid://shopify/Collection/627717210457',
+  //   'gid://shopify/Collection/627717177689',
+  // ];
+  const collectionIds = [
+    'deodorants',
+    'gift-sets',
+    'masks',
+    'soap',
+    'lips',
+    'hair',
+    'body-scrub',
+    'body-butter',
+  ];
+
+  const paginationVariables = getPaginationVariables(request, {
+    pageBy: 8,
+  });
+  const collections = await Promise.all(
+    collectionIds.map(async (collectionId) => {
+      const res = await storefront.query(COLLECTION_QUERY, {
+        variables: {
+          handle: collectionId,
+          ...paginationVariables,
+        },
+      });
+      return res.collection;
+    }),
+  );
 
   return defer(
     {
@@ -108,7 +144,7 @@ export async function loader({context}: LoaderFunctionArgs) {
       header: await headerPromise,
       isLoggedIn: isLoggedInPromise,
       publicStoreDomain,
-      headerData: {collection, bestSellers},
+      headerData: {collection, bestSellers, collections},
     },
     {
       headers: {
@@ -125,7 +161,7 @@ export default function App() {
     ? (headerData.collection?.products.nodes as Product[])
     : [];
   const bestSellers = headerData.bestSellers?.products.nodes as Product[];
-
+  const collections = headerData.collections as Collection[];
   return (
     <html lang="en" className="font-effra">
       <head>
@@ -135,7 +171,11 @@ export default function App() {
         <Links />
       </head>
       <body className="flex flex-col min-h-screen overflow-x-hidden">
-        <PopupProvider products={products} bestSellers={bestSellers}>
+        <PopupProvider
+          products={products}
+          bestSellers={bestSellers}
+          collections={collections}
+        >
           <Layout {...data}>
             <Outlet />
           </Layout>

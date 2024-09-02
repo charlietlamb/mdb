@@ -39,7 +39,6 @@ export async function loader({request, params, context}: LoaderFunctionArgs) {
   const collections: Collection[] = [];
   await Promise.all(
     collectionIds.map(async (id) => {
-      console.log(id);
       const {collection} = await storefront.query(COLLECTION_QUERY, {
         variables: {handle: id, ...paginationVariables},
       });

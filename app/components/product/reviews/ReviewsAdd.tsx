@@ -32,7 +32,6 @@ export default function ReviewsAdd() {
       }
 
       const result = await response.json();
-      console.log('Review submitted successfully:', result);
     } catch (error) {
       console.error('Error submitting review:', error);
     }

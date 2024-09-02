@@ -18,6 +18,7 @@ import {reviews} from '~/data/reviews/reviews';
 import ReviewList from '~/components/product/reviews/ReviewList';
 import {FEATURED_PRODUCTS_QUERY} from '~/components/home/FeaturedProductQuery';
 import RecommendedProducts from '~/components/product/RecommendedProducts';
+import ProductsCollage from '~/components/product/ProductsCollage';
 
 export const meta: MetaFunction<typeof loader> = ({data}) => {
   return [{title: `Hydrogen | ${data?.product.title ?? ''}`}];
@@ -79,7 +80,7 @@ export async function loader({params, request, context}: LoaderFunctionArgs) {
   )
     .then((res) => res.json())
     .catch((err) => {
-      console.log(err?.message);
+      console.error(err?.message);
       return {data: {reviews: [], cursor: ''}, message: '', status: 0};
     })) as Promise<ReviewFetch>;
 
@@ -153,6 +154,7 @@ export default function Product() {
         </div>
         <ReviewList allReviews={filteredReviews} />
         <RecommendedProducts products={filteredProducts} />
+        <ProductsCollage />
       </div>
       <StickyAddToCart
         product={product}

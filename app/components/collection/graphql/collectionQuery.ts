@@ -4,7 +4,7 @@ import {PRODUCT_ITEM_FRAGMENT} from './productItemFragment';
 export const COLLECTION_QUERY = `#graphql
   ${PRODUCT_ITEM_FRAGMENT}
   query Collection(
-    $handle: String!
+   $handle: String!
     $country: CountryCode
     $language: LanguageCode
     $first: Int

@@ -1,4 +1,4 @@
-import {Product} from '@shopify/hydrogen/storefront-api-types';
+import {Collection, Product} from '@shopify/hydrogen/storefront-api-types';
 import {useEffect} from 'react';
 import {useMediaQuery} from 'react-responsive';
 import {usePopupStore} from '~/lib/state/popup/store';
@@ -6,17 +6,21 @@ import {usePopupStore} from '~/lib/state/popup/store';
 export default function PopupProvider({
   products,
   bestSellers,
+  collections,
   children,
 }: {
   products: Product[];
   bestSellers: Product[];
+  collections: Collection[];
   children: React.ReactNode;
 }) {
-  const {setMobileOpen, setProducts, setBestSellers} = usePopupStore();
+  const {setMobileOpen, setProducts, setBestSellers, setCollections} =
+    usePopupStore();
   const isSmallScreen = useMediaQuery({query: '(max-width: 768px)'});
   useEffect(() => {
     setProducts(shuffle(products).slice(0, 5));
     setBestSellers(bestSellers);
+    setCollections(collections);
   }, []);
 
   useEffect(() => {

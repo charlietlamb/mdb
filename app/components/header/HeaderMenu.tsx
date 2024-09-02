@@ -45,7 +45,7 @@ export function HeaderMenu({mobile = false}: {mobile?: boolean}) {
           end
           prefetch="intent"
           // style={activeLinkStyle}
-          to="/best-sellers"
+          to="/collections/best-sellers"
         >
           Best Sellers
         </NavLink>
